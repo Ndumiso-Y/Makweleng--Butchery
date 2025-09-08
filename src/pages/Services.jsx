@@ -14,6 +14,7 @@ export default function Services(){
             src={deliveryImage} 
             alt="Professional delivery service with eco-friendly bags" 
             className="w-full h-full object-cover object-[center_20%] opacity-60"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>

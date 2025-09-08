@@ -12,6 +12,7 @@ export default function Contact(){
             src={meatImage} 
             alt="Fresh raw meat steaks ready for roasting" 
             className="w-full h-full object-cover object-center opacity-60"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>

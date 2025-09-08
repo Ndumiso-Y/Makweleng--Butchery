@@ -10,7 +10,7 @@ export default function Home(){
       {/* Hero */}
       <section className="relative overflow-hidden bg-black min-h-[60vh] md:min-h-[70vh]" aria-label="Hero">
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
-        <img src={poster} alt="Fresh T-bone steak" className="w-full h-[60vh] md:h-[70vh] object-cover object-center" />
+        <img src={poster} alt="Fresh T-bone steak" className="w-full h-[60vh] md:h-[70vh] object-cover object-center" loading="eager" />
         <div className="absolute inset-0 flex items-center">
           <div className="container-pad">
             <div className="max-w-2xl hero-content">

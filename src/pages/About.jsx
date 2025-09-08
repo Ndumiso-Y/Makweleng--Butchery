@@ -12,6 +12,7 @@ export default function About(){
             src={womanGroceries} 
             alt="Woman with groceries - community focused service" 
             className="w-full h-full object-cover object-center opacity-60"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
