@@ -1,0 +1,27 @@
+{
+  "monthly": [
+    {
+      "title": "Maize Meal Saver",
+      "desc": "R20 off selected 10kg bags (while stocks last)."
+    },
+    {
+      "title": "Mid\u2011Month Essentials",
+      "desc": "Bundle discount on sugar, oil, and tea."
+    }
+  ],
+  "loyalty": {
+    "headline": "Loyalty Card",
+    "desc": "Use our delivery service 6 times and get a free delivery or discount. (T&Cs apply)"
+  },
+  "hours": "Mon\u2013Sat 8:00\u201318:00 \u2022 Sun 9:00\u201315:00",
+  "delivery": {
+    "minimumOrder": "R500.00",
+    "radiusNote": "Delivery available within Makweleng Village & nearby areas. Call to confirm your street."
+  },
+  "terms": [
+    "Minimum order for delivery: R500.00.",
+    "Delivery area limited to Makweleng Village & nearby. Additional fee may apply outside radius.",
+    "Free delivery reward applies after six (6) completed delivery orders under one customer name/number.",
+    "Promotions are valid while stocks last and may change without notice."
+  ]
+}
