@@ -58,7 +58,7 @@
   /* Carousel image positioning for second image */
   .carousel-image-second {
     object-fit: cover;
-    object-position: 54% top;
+    object-position: 48% top;
   }
 
   @media (min-width: 640px) {

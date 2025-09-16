@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import image1 from '/dist/assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
-import image2 from '/dist/assets/Delivery in yellow.jpg'
-import image3 from '/dist/assets/women buying groceries.jpg'
-import image4 from '/dist/assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc.jpg'
+import image1 from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
+import image2 from '../assets/Delivery-in-yellow.jpg'
+import image3 from '../assets/women-buying-groceries.jpg'
+import image4 from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -16,11 +16,11 @@ export default function Home() {
     {
       image: image2,
       alt: "Delivery service in yellow",
-      duration: 4000 // Better timing for human comprehension
+      duration: 4000 // Mobile focal point ~48%
     },
     {
       image: image3,
-      alt: "Woman buying groceries",
+      alt: "Women buying groceries",
       duration: 4000
     },
     {

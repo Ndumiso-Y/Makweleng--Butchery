@@ -1,3 +1,4 @@
+import loyaltyCard from '../assets/loyaltycard.png'
 
 export default function Promotions() {
   return (
@@ -6,7 +7,7 @@ export default function Promotions() {
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
           <img
-            src="/dist/assets/loyalty-CcgT3SAW.png"
+            src={loyaltyCard}
             alt="Loyalty rewards program"
             className="w-full h-full opacity-70 mobile-optimized-img"
             loading="lazy"

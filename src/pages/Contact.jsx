@@ -162,16 +162,18 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-center" style={{color: '#9b5f44'}}>Find Us</h2>
 
-            {/* Map Placeholder */}
-            <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center mb-8">
-              <div className="text-center">
-                <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <p className="text-gray-500 text-lg">Interactive Map Coming Soon</p>
-                <p className="text-gray-400">30465 Makweleng Section, Mabeskraal, 0313</p>
-              </div>
+            {/* Interactive Map */}
+            <div className="rounded-lg h-96 mb-8 overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3634.7!2d27.2!3d-25.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMakweleng%2C+Mabeskraal%2C+0313!5e0!3m2!1sen!2sza!4v1"
+                width="100%"
+                height="100%"
+                style={{border: 0}}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Makweleng Butchery Location"
+              />
             </div>
 
             {/* Can't Find Us */}
