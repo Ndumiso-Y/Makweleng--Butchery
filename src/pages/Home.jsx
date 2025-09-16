@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { Truck, Beef, ShoppingCart } from 'lucide-react'
+import OptimizedImage from '../components/OptimizedImage'
 import image1 from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
 import image2 from '../assets/Delivery-in-yellow.jpg'
 import image3 from '../assets/women-buying-groceries.jpg'
@@ -30,6 +32,19 @@ export default function Home() {
     }
   ]
 
+  // Preload critical images
+  useEffect(() => {
+    const preloadImages = [image1, image2]
+    preloadImages.forEach(src => {
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.href = src
+      link.fetchPriority = 'high'
+      document.head.appendChild(link)
+    })
+  }, [])
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -50,15 +65,17 @@ export default function Home() {
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <img
+              <OptimizedImage
                 src={slide.image}
                 alt={slide.alt}
-                loading={index === 0 ? 'eager' : 'lazy'}
+                loading={index <= 1 ? 'eager' : 'lazy'}
+                priority={index === 0}
                 className={`w-full h-full object-cover ${
                   index === 0 ? 'carousel-image-first' :
                   index === 1 ? 'carousel-image-second' :
                   'mobile-optimized-img'
                 }`}
+                placeholder={index > 1}
               />
               <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
@@ -84,7 +101,7 @@ export default function Home() {
         <div className="relative z-10 text-center text-white container-pad">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-              Premium <span style={{color: '#ffbe00'}}>Makweleng</span><br />
+<span style={{color: '#ffbe00'}}>Makweleng</span><br />
               Grocery & Butchery
             </h1>
             <p className="text-xl md:text-2xl mb-8 font-light opacity-90">
@@ -114,9 +131,7 @@ export default function Home() {
             {/* Service 1 - Delivery */}
             <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                </svg>
+<Truck size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Doorstep Delivery</h3>
               <p className="text-gray-600 mb-4">Reliable delivery from orders of R500+. No more queues, no more heavy bags — we bring quality to your door.</p>
@@ -126,9 +141,7 @@ export default function Home() {
             {/* Service 2 - Meat */}
             <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#9b5f44'}}>
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
+<Beef size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Precision Meat Cutting</h3>
               <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Expert butchers ensuring perfect cuts every time.</p>
@@ -138,9 +151,7 @@ export default function Home() {
             {/* Service 3 - Complete */}
             <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                </svg>
+<ShoppingCart size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>One-Stop Groceries</h3>
               <p className="text-gray-600 mb-4">Staples, electricity & DSTV payments, airtime, and more. Everything you need in one convenient location.</p>
@@ -239,6 +250,25 @@ export default function Home() {
         <div className="container-pad text-center">
           <h2 className="text-4xl font-bold mb-8" style={{color: '#ffbe00'}}>Order Today, Delivered to Your Doorstep</h2>
           <p className="text-xl text-gray-300 mb-8">Minimum order R500. Free delivery after 6 orders (T&Cs apply).</p>
+
+          {/* Operational Hours */}
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-yellow-400 mb-4">Operational Hours</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+              <div>
+                <div className="font-semibold text-white mb-2">Monday - Saturday</div>
+                <div className="text-lg">07:00 - 17:00</div>
+              </div>
+              <div>
+                <div className="font-semibold text-white mb-2">Sunday Schedule</div>
+                <div className="text-sm">
+                  <div>First & Last Sunday: 07:00 - 16:00</div>
+                  <div>Mid Month Sunday: 07:00 - 15:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
               WhatsApp 072 474 6047

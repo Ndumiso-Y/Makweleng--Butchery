@@ -37,15 +37,16 @@ export default function Footer() {
               <p>Mabeskraal, 0313</p>
               <p>Phone: 072 474 6047</p>
               <p>Phone: 076 011 4405</p>
-              <p>Mon–Sat: 8:00–18:00</p>
-              <p>Sun: 9:00–15:00</p>
+              <p>Mon-Sat: 07:00-17:00</p>
+              <p>First & Last Sunday: 07:00-16:00</p>
+              <p>Mid Month Sunday: 07:00-15:00</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2025 Makweleng Group. All rights reserved. | Designed by <span style={{color: '#ffbe00'}}>Embark Digitals</span>
+© 2025 Makweleng Group. All rights reserved. | Designed by <a href="https://www.embarkdigitals.com" target="_blank" rel="noopener noreferrer" style={{color: '#ffbe00'}} className="hover:underline">Embark Digitals</a>
           </p>
         </div>
       </div>

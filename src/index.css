@@ -70,12 +70,12 @@
   /* Contact page image positioning */
   .contact-image-mobile {
     object-fit: cover;
-    object-position: left 25%;
+    object-position: center 35%; /* Position to show meat content */
   }
 
   @media (min-width: 640px) {
     .contact-image-mobile {
-      object-position: center center;
+      object-position: center 30%; /* Desktop - show meat content clearly */
     }
   }
 

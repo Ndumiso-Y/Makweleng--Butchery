@@ -1,6 +1,8 @@
 
 import Section from '../components/Section'
 import ServiceCard from '../components/ServiceCard'
+import OptimizedImage from '../components/OptimizedImage'
+import OptimizedVideo from '../components/OptimizedVideo'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import deliveryImage from '../assets/Delivery-in-yellow.jpg'
 import foodDeliveryVideo from '../assets/food-delivery.mp4'
@@ -11,11 +13,12 @@ export default function Services(){
       {/* Hero Section with New Cover Image */}
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src={deliveryImage}
             alt="Yellow delivery service with groceries"
             className="w-full h-full opacity-70 mobile-optimized-img"
-            loading="lazy"
+            loading="eager"
+            priority={true}
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
@@ -30,15 +33,15 @@ export default function Services(){
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Full Background Video with Fade Effects */}
         <div className="absolute inset-0 opacity-15">
-          <video
-            autoPlay
+          <OptimizedVideo
+            src={foodDeliveryVideo}
+            autoplay={true}
             loop
             muted
-            playsInline
+            lazy={true}
             className="w-full h-full object-cover"
-          >
-            <source src={foodDeliveryVideo} type="video/mp4" />
-          </video>
+            poster={deliveryImage}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-60"></div>
         </div>
 

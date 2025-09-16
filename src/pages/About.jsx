@@ -1,5 +1,7 @@
 
 import Section from '../components/Section'
+import OptimizedImage from '../components/OptimizedImage'
+import OptimizedVideo from '../components/OptimizedVideo'
 import womanGroceries from '../assets/womangroceries.jpg'
 import womenBuyingVideo from '../assets/women-buying-groceries.mp4'
 
@@ -9,17 +11,18 @@ export default function About(){
       {/* Hero Section with Woman Groceries Image */}
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src={womanGroceries}
             alt="Woman with groceries - community focused service"
             className="w-full h-full opacity-60 mobile-optimized-img"
-            loading="lazy"
+            loading="eager"
+            priority={true}
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
         <div className="relative container-pad text-center flex items-center justify-center min-h-[80vh]">
           <div className="max-w-4xl">
-            <h1 className="text-white mb-8 drop-shadow-lg">About Us</h1>
+            <h1 className="text-white mb-8 drop-shadow-lg text-5xl md:text-6xl font-bold">About Us</h1>
             <p className="text-xl text-white font-medium mb-12 drop-shadow-md">Makweleng Grocery, Butchery & Delivery is a family‑run business in Makweleng Village (Mabeskraal), Rustenburg.</p>
             
             <div className="bg-white bg-opacity-90 rounded-xl2 p-8 shadow-medium max-w-3xl mx-auto">
@@ -52,15 +55,17 @@ export default function About(){
 
       <section className="py-20 bg-gray-50 relative overflow-hidden">
         {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        >
-          <source src={womenBuyingVideo} type="video/mp4" />
-        </video>
+        <div className="absolute inset-0">
+          <OptimizedVideo
+            src={womenBuyingVideo}
+            autoplay={true}
+            loop
+            muted
+            lazy={true}
+            className="w-full h-full object-cover opacity-20"
+            poster={womanGroceries}
+          />
+        </div>
         <div className="absolute inset-0 bg-white bg-opacity-60"></div>
 
         <div className="relative container-pad">

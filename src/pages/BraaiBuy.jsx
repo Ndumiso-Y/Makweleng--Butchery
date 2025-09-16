@@ -1,44 +1,45 @@
+import OptimizedVideo from '../components/OptimizedVideo'
+import OptimizedImage from '../components/OptimizedImage'
 import grillingVideo from '../assets/grilling.mp4'
 import assortedMeat from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
 
 export default function BraaiBuy() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="py-20 bg-white">
-        <div className="container-pad">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{color: '#9b5f44'}}>
-              Buy & <span style={{color: '#ffbe00'}}>Braai</span>
+      {/* Master the Art of Braai - Combined Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden min-h-[90vh]">
+        {/* Background Video - Integrated into UI */}
+        <div className="absolute inset-0">
+          <OptimizedVideo
+            src={grillingVideo}
+            autoplay={true}
+            loop
+            muted
+            lazy={false}
+            priority={true}
+            className="w-full h-full object-cover opacity-30"
+            poster={assortedMeat}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
+        </div>
+
+        {/* Buy & Braai Hero - Centered at Top */}
+        <div className="container-pad relative text-center mb-16">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{color: '#ffbe00'}}>
+              Buy & Braai
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-white font-medium mb-8 drop-shadow-md">
               A‑grade, juicy T‑bone and fresh cuts for sit‑in braai or takeaway.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Grilling Experience Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-        {/* Background Video - Integrated into UI */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-30"
-          >
-            <source src={grillingVideo} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
         </div>
 
         <div className="container-pad relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Content Side */}
             <div className="text-white">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Master the Art of <span style={{color: '#ffbe00'}}>Braai</span>
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
@@ -75,7 +76,7 @@ export default function BraaiBuy() {
             {/* Image Side */}
             <div className="relative">
               <div className="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl">
-                <img
+                <OptimizedImage
                   src={assortedMeat}
                   alt="Assorted premium meat cuts"
                   className="w-full h-80 rounded-xl shadow-2xl meat-image-mobile object-cover"

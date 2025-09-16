@@ -1,5 +1,5 @@
+import OptimizedImage from '../components/OptimizedImage'
 import assortedMeat from '../assets/raw-meat-steaks-on-a-dark-background-ready-to-roas-2025-02-12-22-41-18-utc.jpg'
-import tBonePortrait from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc.jpg'
 
 export default function Contact() {
   return (
@@ -7,11 +7,12 @@ export default function Contact() {
       {/* Hero Section with New Cover Image */}
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src={assortedMeat}
-            alt="Premium assorted meat cuts"
+            alt="Professional butcher tools and fresh meat cuts"
             className="w-full h-full opacity-75 contact-image-mobile"
-            loading="lazy"
+            loading="eager"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-50"></div>
         </div>
@@ -41,23 +42,8 @@ export default function Contact() {
       </section>
 
       {/* Get In Touch */}
-      <section className="py-16 relative">
+      <section className="py-16">
         <div className="container-pad">
-          {/* Portrait Image positioned elegantly */}
-          <div className="absolute top-8 right-8 hidden lg:block z-10">
-            <div className="bg-white bg-opacity-95 backdrop-blur-sm p-4 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-              <img
-                src={tBonePortrait}
-                alt="Premium T-bone steak"
-                className="w-28 h-40 object-cover rounded-xl"
-                loading="lazy"
-              />
-              <div className="text-center mt-2">
-                <p className="text-xs font-semibold text-gray-700">Premium T-bone</p>
-              </div>
-            </div>
-          </div>
-
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <div className="bg-white p-8 rounded-lg shadow-lg">
@@ -109,7 +95,11 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg" style={{color: '#9b5f44'}}>Hours</h3>
-                    <p className="text-gray-600">Mon–Sat 8:00–18:00 • Sun 9:00–15:00</p>
+                    <div className="text-gray-600">
+                      <p>Mon-Sat: 07:00-17:00</p>
+                      <p className="text-sm">First & Last Sunday: 07:00-16:00</p>
+                      <p className="text-sm">Mid Month Sunday: 07:00-15:00</p>
+                    </div>
                   </div>
                 </div>
               </div>
