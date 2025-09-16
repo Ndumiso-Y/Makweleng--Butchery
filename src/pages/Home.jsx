@@ -1,120 +1,250 @@
+import { useState, useEffect } from 'react'
+import image1 from '/dist/assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
+import image2 from '/dist/assets/Delivery in yellow.jpg'
+import image3 from '/dist/assets/women buying groceries.jpg'
+import image4 from '/dist/assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc.jpg'
 
-import Section from '../components/Section'
-import { Link } from 'react-router-dom'
-import poster from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc.jpg'
-import { Truck, Beef, ShoppingCart, DollarSign, Gift, Star } from 'lucide-react'
+export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0)
 
-export default function Home(){
+  const slides = [
+    {
+      image: image1,
+      alt: "Premium raw beef steaks",
+      duration: 5000 // First image displays longer
+    },
+    {
+      image: image2,
+      alt: "Delivery service in yellow",
+      duration: 4000 // Better timing for human comprehension
+    },
+    {
+      image: image3,
+      alt: "Woman buying groceries",
+      duration: 4000
+    },
+    {
+      image: image4,
+      alt: "Grilled kebabs and vegetables on barbecue",
+      duration: 4000
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, slides[currentSlide].duration)
+
+    return () => clearInterval(timer)
+  }, [currentSlide, slides])
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-black min-h-[60vh] md:min-h-[70vh]" aria-label="Hero">
-        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
-        <img src={poster} alt="Fresh T-bone steak" className="w-full h-[60vh] md:h-[70vh] object-cover object-center" loading="eager" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container-pad">
-            <div className="max-w-2xl hero-content">
-              <h1 className="text-white animate-fade-up text-3xl md:text-5xl">Fresh Meat. Groceries. Delivered.</h1>
-              <p className="mt-6 text-lg md:text-xl text-white font-medium animate-fade-up-delay">A‑grade cuts, everyday essentials, and doorstep delivery for Makweleng Village — because your convenience is our priority.</p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-up-delay-2">
-                <a href="#whatsapp" className="btn-primary animate-pulse-slow shadow-lg" aria-label="Order on WhatsApp">Order on WhatsApp</a>
-                <Link to="/services" className="bg-white text-black px-6 py-3 rounded-xl2 font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg inline-flex items-center justify-center" aria-label="View our services">View Our Services</Link>
+      {/* Hero Section with Carousel */}
+      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Carousel Images */}
+        <div className="absolute inset-0">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className={`w-full h-full ${
+                  index === 0 ? 'carousel-image-first' :
+                  index === 1 ? 'carousel-image-second' :
+                  'mobile-optimized-img'
+                }`}
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'bg-yellow-400 scale-125'
+                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 text-center text-white container-pad">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+              Premium <span style={{color: '#ffbe00'}}>Makweleng</span><br />
+              Grocery & Butchery
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 font-light opacity-90">
+              Makweleng Grocery, Butchery and delivery • Makweleng Liquor store • Makweleng Restaurant and Events venue — serving Makweleng Village with pride for over a decade.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300">
+                Order Now
+              </a>
+              <a href="#services" className="btn-secondary text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300">
+                Our Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="container-pad">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Makweleng</h2>
+            <p className="text-xl text-gray-600">Family-run. Community-driven. Over a decade serving Makweleng with pride.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Service 1 - Delivery */}
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Doorstep Delivery</h3>
+              <p className="text-gray-600 mb-4">Reliable delivery from orders of R500+. No more queues, no more heavy bags — we bring quality to your door.</p>
+              <div className="font-semibold" style={{color: '#ffbe00'}}>Free delivery after 6 orders</div>
+            </div>
+
+            {/* Service 2 - Meat */}
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#9b5f44'}}>
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Precision Meat Cutting</h3>
+              <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Expert butchers ensuring perfect cuts every time.</p>
+              <div className="font-semibold" style={{color: '#9b5f44'}}>Freshness guaranteed</div>
+            </div>
+
+            {/* Service 3 - Complete */}
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>One-Stop Groceries</h3>
+              <p className="text-gray-600 mb-4">Staples, electricity & DSTV payments, airtime, and more. Everything you need in one convenient location.</p>
+              <div className="font-semibold" style={{color: '#ffbe00'}}>Complete convenience</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-white">
+        <div className="container-pad">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              {/* Content */}
+              <div>
+                <h2 className="text-4xl font-bold mb-6" style={{color: '#9b5f44'}}>
+                  Why Choose <span style={{color: '#ffbe00'}}>Makweleng</span>?
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                  For over a decade, we've been proudly serving the Makweleng Village community with premium meat cuts, fresh groceries, and reliable delivery services.
+                </p>
+
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>10+ Years Experience</h3>
+                      <p className="text-gray-600">Trusted by the community for over a decade</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>A-Grade Quality</h3>
+                      <p className="text-gray-600">Premium cuts and fresh products guaranteed</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>Free Delivery</h3>
+                      <p className="text-gray-600">After 6 orders - convenience at your doorstep</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <a href="/about" className="btn-secondary px-8 py-3" style={{color: '#9b5f44', borderColor: '#9b5f44'}}>
+                    Learn More About Us
+                  </a>
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-8">
+                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>500+</div>
+                  <div className="text-gray-600 font-medium">Happy Customers</div>
+                </div>
+                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>10+</div>
+                  <div className="text-gray-600 font-medium">Years Serving</div>
+                </div>
+                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>5★</div>
+                  <div className="text-gray-600 font-medium">Service Rating</div>
+                </div>
+                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>24/7</div>
+                  <div className="text-gray-600 font-medium">WhatsApp Support</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <Section eyebrow="Why Makweleng" title="Family‑Run. Community‑Driven." subtitle="Over a decade serving Makweleng with pride. We carry the load so you don't have to.">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="card stagger-1">
-            <div className="text-amber mb-4 icon-bounce">
-              <Truck size={48} />
-            </div>
-            <h3 className="text-amber mb-2">Doorstep Delivery</h3>
-            <p>Reliable delivery from orders of R500+. No more queues, no more heavy bags.</p>
-          </div>
-          <div className="card stagger-2">
-            <div className="text-amber mb-4 icon-bounce">
-              <Beef size={48} />
-            </div>
-            <h3 className="text-amber mb-2">Precision Meat Cutting</h3>
-            <p>Cold‑room storage and premium cuts at affordable prices.</p>
-          </div>
-          <div className="card stagger-3">
-            <div className="text-amber mb-4 icon-bounce">
-              <ShoppingCart size={48} />
-            </div>
-            <h3 className="text-amber mb-2">One‑Stop Groceries</h3>
-            <p>Staples, electricity & DSTV payments, airtime, and more.</p>
-          </div>
-        </div>
-      </Section>
-
-      <Section bg="dark" title="Juicy A‑Grade Meat, Perfect for Any Braai" subtitle="Sit‑in or takeaway — T‑bone cravings covered.">
-        <div className="mt-8 animate-scale-in">
-          <Link to="/buy-braai" className="btn-primary animate-bounce-soft">Explore Buy & Braai</Link>
-        </div>
-      </Section>
-
-      <Section bg="amber" title="Save More with Makweleng" subtitle="Check monthly and mid‑month specials, plus loyalty rewards.">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="card stagger-1">
-            <div className="text-black mb-4 icon-bounce">
-              <DollarSign size={48} />
-            </div>
-            <h3 className="mb-2">Monthly Specials</h3>
-            <p>Promotions on essentials — updated regularly.</p>
-          </div>
-          <div className="card stagger-2">
-            <div className="text-black mb-4 icon-bounce">
-              <Gift size={48} />
-            </div>
-            <h3 className="mb-2">Loyalty Rewards</h3>
-            <p>Free delivery after 6 orders (T&Cs apply).</p>
-          </div>
-        </div>
-      </Section>
-
-      <Section title="What Our Customers Say">
-        <div className="grid md:grid-cols-3 gap-8">
-          <blockquote className="card border-l-4 border-amber stagger-1">
-            <div className="flex text-amber mb-3 animate-fade-in">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} fill="currentColor" className="icon-bounce" />
-              ))}
-            </div>
-            <p className="italic">"Delivery changed my life — no more carrying heavy bags in the heat."</p>
-            <footer className="mt-4 text-sm text-grey-medium font-medium">— Local Pensioner</footer>
-          </blockquote>
-          <blockquote className="card border-l-4 border-amber stagger-2">
-            <div className="flex text-amber mb-3 animate-fade-in">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} fill="currentColor" className="icon-bounce" />
-              ))}
-            </div>
-            <p className="italic">"Best T‑bone around. Juicy, fresh, and affordable."</p>
-            <footer className="mt-4 text-sm text-grey-medium font-medium">— Community Member</footer>
-          </blockquote>
-          <blockquote className="card border-l-4 border-amber stagger-3">
-            <div className="flex text-amber mb-3 animate-fade-in">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} fill="currentColor" className="icon-bounce" />
-              ))}
-            </div>
-            <p className="italic">"Friendly staff, fast service, and great prices."</p>
-            <footer className="mt-4 text-sm text-grey-medium font-medium">— Regular Customer</footer>
-          </blockquote>
-        </div>
-      </Section>
-
-      <section id="whatsapp" className="bg-black text-white py-16" aria-label="Order via WhatsApp">
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-900 text-white">
         <div className="container-pad text-center">
-          <h2 className="text-amber animate-fade-up">Order Today, Delivered to Your Doorstep</h2>
-          <p className="mt-6 text-xl text-grey-light animate-fade-up-delay">Minimum order R500. Free delivery after 6 orders (T&Cs apply).</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-2">
-            <a className="btn-primary animate-pulse-slow" href="https://wa.me/27724746047" target="_blank" rel="noreferrer">WhatsApp 072 474 6047</a>
-            <a className="btn-outline text-white border-white hover:text-black" href="https://wa.me/27760114405" target="_blank" rel="noreferrer">WhatsApp 076 011 4405</a>
+          <h2 className="text-4xl font-bold mb-8" style={{color: '#ffbe00'}}>Order Today, Delivered to Your Doorstep</h2>
+          <p className="text-xl text-gray-300 mb-8">Minimum order R500. Free delivery after 6 orders (T&Cs apply).</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
+              WhatsApp 072 474 6047
+            </a>
+            <a href="https://wa.me/27760114405" className="btn-secondary text-xl px-12 py-6 bg-white hover:bg-gray-100" style={{color: '#9b5f44'}}>
+              WhatsApp 076 011 4405
+            </a>
           </div>
         </div>
       </section>

@@ -8,10 +8,10 @@ export default function About(){
       {/* Hero Section with Woman Groceries Image */}
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
-          <img 
-            src={womanGroceries} 
-            alt="Woman with groceries - community focused service" 
-            className="w-full h-full object-cover object-center opacity-60"
+          <img
+            src={womanGroceries}
+            alt="Woman with groceries - community focused service"
+            className="w-full h-full opacity-60 mobile-optimized-img"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -49,43 +49,115 @@ export default function About(){
         </div>
       </section>
 
-      <Section title="What Makes Us Different">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="card text-center">
-            <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold">1</span>
-            </div>
-            <h3 className="text-amber mb-2">Convenience‑First</h3>
-            <p>Delivery designed to remove long walks, queues, and heavy loads.</p>
+      <section className="py-20 bg-gray-50 relative overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        >
+          <source src="/dist/assets/woment buying groceries.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-white bg-opacity-60"></div>
+
+        <div className="relative container-pad">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Makes Us Different</h2>
           </div>
-          <div className="card text-center">
-            <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold">2</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold">1</span>
+              </div>
+              <h3 className="text-amber text-xl font-bold mb-2">Convenience‑First</h3>
+              <p className="text-gray-700">Delivery designed to remove long walks, queues, and heavy loads.</p>
             </div>
-            <h3 className="text-amber mb-2">Community‑Focused</h3>
-            <p>Especially supporting pensioners and families in our village.</p>
-          </div>
-          <div className="card text-center">
-            <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold">3</span>
+            <div className="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold">2</span>
+              </div>
+              <h3 className="text-amber text-xl font-bold mb-2">Community‑Focused</h3>
+              <p className="text-gray-700">Especially supporting pensioners and families in our village.</p>
             </div>
-            <h3 className="text-amber mb-2">Family Network</h3>
-            <p>Part of a family network of local businesses serving Makweleng.</p>
+            <div className="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="bg-amber text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold">3</span>
+              </div>
+              <h3 className="text-amber text-xl font-bold mb-2">Family Network</h3>
+              <p className="text-gray-700">Part of a family network of local businesses serving Makweleng.</p>
+            </div>
           </div>
         </div>
-      </Section>
-      <Section title="Mission, Vision & Values">
-        <h3 className="mt-2">Mission</h3>
-        <p>Create awareness and scale our delivery service so no one in the village is left behind.</p>
-        <h3 className="mt-6">Vision</h3>
-        <p>Quality supplies and fresh meat delivered to your door — comfort without leaving home.</p>
-        <h3 className="mt-6">Values</h3>
-        <ul className="list-disc pl-6 mt-2 space-y-1">
-          <li>Quality Excellence</li>
-          <li>Customer‑Centric Service</li>
-          <li>Community Care</li>
-        </ul>
-      </Section>
+      </section>
+      <section className="py-20 bg-white">
+        <div className="container-pad">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Mission, Vision & Values</h2>
+            <p className="text-xl text-gray-600">The principles that guide everything we do</p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Mission */}
+            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl font-bold mb-4" style={{color: '#9b5f44'}}>Mission</h3>
+              </div>
+              <p className="text-lg text-gray-700 leading-relaxed text-center">
+                Create awareness and scale our delivery service so no one in the village is left behind.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl font-bold mb-4" style={{color: '#9b5f44'}}>Vision</h3>
+              </div>
+              <p className="text-lg text-gray-700 leading-relaxed text-center">
+                Quality supplies and fresh meat delivered to your door — comfort without leaving home.
+              </p>
+            </div>
+
+            {/* Values */}
+            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl font-bold mb-4" style={{color: '#9b5f44'}}>Values</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 p-4 bg-white bg-opacity-70 rounded-xl">
+                  <div className="w-3 h-3 rounded-full" style={{backgroundColor: '#ffbe00'}}></div>
+                  <span className="font-semibold text-gray-800">Quality Excellence</span>
+                </div>
+                <div className="flex items-center space-x-4 p-4 bg-white bg-opacity-70 rounded-xl">
+                  <div className="w-3 h-3 rounded-full" style={{backgroundColor: '#ffbe00'}}></div>
+                  <span className="font-semibold text-gray-800">Customer‑Centric Service</span>
+                </div>
+                <div className="flex items-center space-x-4 p-4 bg-white bg-opacity-70 rounded-xl">
+                  <div className="w-3 h-3 rounded-full" style={{backgroundColor: '#ffbe00'}}></div>
+                  <span className="font-semibold text-gray-800">Community Care</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

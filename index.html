@@ -12,8 +12,21 @@
     <meta property="og:image" content="/src/assets/share.jpg" />
     <meta name="theme-color" content="#FFBF00" />
     <link rel="icon" href="/src/assets/favicon.ico">
+    <!-- GitHub Pages SPA routing fix -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
-  <body class="bg-white text-grayx-700">
+  <body class="bg-white text-gray-700">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

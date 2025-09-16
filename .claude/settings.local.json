@@ -4,7 +4,9 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(git branch:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebFetch(domain:gulland.co.za)",
+      "WebFetch(domain:ndumiso-y.github.io)"
     ],
     "deny": [],
     "ask": []
