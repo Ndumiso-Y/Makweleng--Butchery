@@ -1,6 +1,7 @@
 
 import Section from '../components/Section'
 import womanGroceries from '../assets/womangroceries.jpg'
+import womenBuyingVideo from '../assets/women-buying-groceries.mp4'
 
 export default function About(){
   return (
@@ -58,7 +59,7 @@ export default function About(){
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         >
-          <source src="/dist/assets/woment buying groceries.mp4" type="video/mp4" />
+          <source src={womenBuyingVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-white bg-opacity-60"></div>
 

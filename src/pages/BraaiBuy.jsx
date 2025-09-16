@@ -1,3 +1,6 @@
+import grillingVideo from '../assets/grilling.mp4'
+import assortedMeat from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
+
 export default function BraaiBuy() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -26,7 +29,7 @@ export default function BraaiBuy() {
             playsInline
             className="w-full h-full object-cover opacity-30"
           >
-            <source src="/dist/assets/Grilling.mp4" type="video/mp4" />
+            <source src={grillingVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
         </div>
@@ -73,9 +76,10 @@ export default function BraaiBuy() {
             <div className="relative">
               <div className="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl">
                 <img
-                  src="/dist/assets/Assorted meat 3.jpg"
+                  src={assortedMeat}
                   alt="Assorted premium meat cuts"
-                  className="w-full h-80 rounded-xl shadow-2xl meat-image-mobile"
+                  className="w-full h-80 rounded-xl shadow-2xl meat-image-mobile object-cover"
+                  loading="lazy"
                 />
                 <div className="mt-6 text-center">
                   <h3 className="text-2xl font-bold text-yellow-400 mb-2">Premium Meat Selection</h3>

@@ -53,7 +53,8 @@ export default function Home() {
               <img
                 src={slide.image}
                 alt={slide.alt}
-                className={`w-full h-full ${
+                loading={index === 0 ? 'eager' : 'lazy'}
+                className={`w-full h-full object-cover ${
                   index === 0 ? 'carousel-image-first' :
                   index === 1 ? 'carousel-image-second' :
                   'mobile-optimized-img'

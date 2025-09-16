@@ -1,3 +1,5 @@
+import assortedMeat from '../assets/raw-meat-steaks-on-a-dark-background-ready-to-roas-2025-02-12-22-41-18-utc.jpg'
+import tBonePortrait from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc.jpg'
 
 export default function Contact() {
   return (
@@ -6,7 +8,7 @@ export default function Contact() {
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
           <img
-            src="/dist/assets/Assorted meat 2.jpg"
+            src={assortedMeat}
             alt="Premium assorted meat cuts"
             className="w-full h-full opacity-75 contact-image-mobile"
             loading="lazy"
@@ -45,9 +47,10 @@ export default function Contact() {
           <div className="absolute top-8 right-8 hidden lg:block z-10">
             <div className="bg-white bg-opacity-95 backdrop-blur-sm p-4 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
               <img
-                src="/dist/assets/T bone potrait.jpg"
+                src={tBonePortrait}
                 alt="Premium T-bone steak"
                 className="w-28 h-40 object-cover rounded-xl"
+                loading="lazy"
               />
               <div className="text-center mt-2">
                 <p className="text-xs font-semibold text-gray-700">Premium T-bone</p>

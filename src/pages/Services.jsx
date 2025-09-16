@@ -2,6 +2,8 @@
 import Section from '../components/Section'
 import ServiceCard from '../components/ServiceCard'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
+import deliveryImage from '../assets/Delivery-in-yellow.jpg'
+import foodDeliveryVideo from '../assets/food-delivery.mp4'
 
 export default function Services(){
   return (
@@ -10,7 +12,7 @@ export default function Services(){
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
           <img
-            src="/dist/assets/Yellow Delivery with groceries.jpg"
+            src={deliveryImage}
             alt="Yellow delivery service with groceries"
             className="w-full h-full opacity-70 mobile-optimized-img"
             loading="lazy"
@@ -35,7 +37,7 @@ export default function Services(){
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/dist/assets/food delivery.mp4" type="video/mp4" />
+            <source src={foodDeliveryVideo} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-60"></div>
         </div>
