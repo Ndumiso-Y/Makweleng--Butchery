@@ -10,7 +10,7 @@ import Contact from './pages/Contact'
 
 export default function App() {
   // Handle GitHub Pages base path
-  const basename = import.meta.env.PROD ? '/Website' : ''
+  const basename = import.meta.env.PROD ? '/Makweleng--Butchery' : ''
 
   return (
     <Router basename={basename}>

@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://yourusername.github.io/Website",
+  "homepage": "https://Ndumiso-Y.github.io/Makweleng--Butchery",
   "dependencies": {
     "lucide-react": "^0.542.0",
     "react": "^18.3.1",
@@ -21,7 +21,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "@vitejs/plugin-react": "^5.0.2",
     "autoprefixer": "^10.4.20",
-    "gh-pages": "^6.0.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
     "vite": "^5.4.2"
