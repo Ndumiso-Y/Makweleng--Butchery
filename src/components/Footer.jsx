@@ -5,7 +5,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4" style={{color: '#ffbe00'}}>Makweleng Group</h3>
+            <h3 className="text-2xl font-bold mb-2" style={{color: '#ffbe00'}}>Makweleng Group</h3>
+            <div className="mb-4">
+              <p className="text-amber-200 font-medium italic text-lg">
+                "Your convenience is our Priority"
+              </p>
+            </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
               Makweleng Grocery, Butchery and delivery • Makweleng Liquor store • Makweleng Restaurant and Events venue — serving Makweleng Village with pride for over a decade.
             </p>

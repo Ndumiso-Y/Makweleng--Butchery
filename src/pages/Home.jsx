@@ -1,13 +1,37 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
-import OptimizedImage from '../components/OptimizedImage'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// import OptimizedImage from '../components/OptimizedImage'
 import image1 from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
 import image2 from '../assets/Delivery-in-yellow.jpg'
 import image3 from '../assets/women-buying-groceries.jpg'
 import image4 from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
+// Story-driven narrative assets (in narrative order)
+import butcherImage from '../assets/ManCutting-compressed.png' // 1. Butcher with knife & cutting board (prep)
+import meatImage from '../assets/isolated meat 4-transparent.png' // 2. Picture of meat (product quality)
+import braaiStandImage from '../assets/braai-stand.png' // 3. BBQ stand (cooking/serving)
+import deliveryBikeImage from '../assets/isolated-bike.png' // 4. Delivery bike (fulfillment)
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+  const servicesRef = useRef(null)
+  const whyChooseRef = useRef(null)
+
+  // Story narrative refs (in order: prep → product → cook → deliver)
+  const butcherRef = useRef(null) // 1. Butcher (prep)
+  const meatRef = useRef(null) // 2. Meat (product quality)
+  const braaiStandRef = useRef(null) // 3. BBQ stand (cooking/serving)
+  const deliveryBikeRef = useRef(null) // 4. Delivery bike (fulfillment)
+
+  // Why Choose section refs (quality + speed)
+  const whyChooseMeatRef = useRef(null) // Quality badge
+  const whyChooseBikeRef = useRef(null) // Speed/delivery
+
 
   const slides = [
     {
@@ -52,12 +76,347 @@ export default function Home() {
 
     return () => clearInterval(timer)
   }, [currentSlide, slides])
+
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+
+  // Mouse tilt disabled to prevent conflicts
+
+  // Story-driven GSAP animations
+  useEffect(() => {
+    const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isMobile = window.innerWidth <= 640
+    const isTablet = window.innerWidth > 640 && window.innerWidth <= 1024
+
+    if (shouldReduceMotion) {
+      // Static placement when motion is reduced
+      if (butcherRef.current) gsap.set(butcherRef.current, { opacity: 1 })
+      if (meatRef.current) gsap.set(meatRef.current, { opacity: 1 })
+      if (deliveryBikeRef.current) gsap.set(deliveryBikeRef.current, { opacity: 1 })
+      if (braaiStandRef.current) gsap.set(braaiStandRef.current, { opacity: 1 })
+      if (whyChooseMeatRef.current) gsap.set(whyChooseMeatRef.current, { opacity: 1 })
+      if (whyChooseBikeRef.current) gsap.set(whyChooseBikeRef.current, { opacity: 1 })
+      return
+    }
+
+    // === SERVICES SECTION: Story-driven narrative ===
+
+    // 1. BUTCHER - slide from left with perspective
+    if (butcherRef.current && !isMobile) {
+      gsap.set(butcherRef.current, {
+        opacity: 0,
+        x: -60,
+        rotationZ: -2,
+        rotationY: 6,
+        rotationX: 2,
+        scale: 0.9
+      })
+
+      const butcherTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 80%",
+          once: true
+        }
+      })
+
+      butcherTl
+        .to(butcherRef.current, {
+          opacity: 1,
+          x: 0,
+          rotationZ: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out"
+        })
+        .to(butcherRef.current, {
+          y: "+=6",
+          duration: 2.2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // 2. MEAT - slide from top with scale (always visible on mobile)
+    if (meatRef.current) {
+      gsap.set(meatRef.current, {
+        opacity: 0,
+        y: -32,
+        rotationY: -4,
+        rotationX: 2,
+        scale: isMobile ? 0.85 : 0.96
+      })
+
+      const meatTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 75%",
+          once: true
+        }
+      })
+
+      meatTl
+        .to(meatRef.current, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.2
+        })
+        .to(meatRef.current, {
+          y: "+=6",
+          duration: 2.2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // 3. DELIVERY BIKE - slide from right with roll (always visible, smaller on mobile)
+    if (deliveryBikeRef.current) {
+      gsap.set(deliveryBikeRef.current, {
+        opacity: 0,
+        x: 70,
+        rotationY: -3,
+        scale: isMobile ? 0.7 : 0.9
+      })
+
+      const bikeTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 70%",
+          once: true
+        }
+      })
+
+      bikeTl
+        .to(deliveryBikeRef.current, {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: 0.4
+        })
+        .to(deliveryBikeRef.current, {
+          x: "+=5",
+          rotationZ: "+=1.5",
+          duration: 2.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // 4. BBQ STAND - slide from right with heat shimmer
+    if (braaiStandRef.current && !isMobile) {
+      gsap.set(braaiStandRef.current, {
+        opacity: 0,
+        x: 50,
+        rotationZ: 2,
+        rotationY: -6,
+        rotationX: 1,
+        scale: 0.9
+      })
+
+      const bbqTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 65%",
+          once: true
+        }
+      })
+
+      bbqTl
+        .to(braaiStandRef.current, {
+          opacity: 1,
+          x: 0,
+          rotationZ: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: 0.6
+        })
+        .to(braaiStandRef.current, {
+          scale: "+=0.01",
+          duration: 3.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // Content reveals for Services section
+    const servicesTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: servicesRef.current,
+        start: "top 75%",
+        once: true
+      }
+    })
+
+    // Services header
+    servicesTl.fromTo(".services-header",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }
+    )
+
+    // Service cards with stagger
+    servicesTl.fromTo(".service-card",
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.1
+      },
+      "-=0.3"
+    )
+
+    // === WHY CHOOSE SECTION: Quality + Speed ===
+
+    // MEAT (Quality Badge) - slide from top, facing inward
+    if (whyChooseMeatRef.current && !isMobile) {
+      gsap.set(whyChooseMeatRef.current, {
+        opacity: 0,
+        y: -24,
+        rotationY: 3,
+        rotationX: 2,
+        scale: 0.9
+      })
+
+      const whyMeatTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: whyChooseRef.current,
+          start: "top 80%",
+          once: true
+        }
+      })
+
+      whyMeatTl
+        .to(whyChooseMeatRef.current, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "power3.out"
+        })
+        .to(whyChooseMeatRef.current, {
+          y: "+=6",
+          duration: 2.2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // DELIVERY BIKE (Speed) - slide from right with roll (visible on all devices, smaller on mobile)
+    if (whyChooseBikeRef.current) {
+      gsap.set(whyChooseBikeRef.current, {
+        opacity: 0,
+        x: 70,
+        rotationY: -4,
+        scale: isMobile ? 0.7 : 0.9
+      })
+
+      const whyBikeTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: whyChooseRef.current,
+          start: "top 75%",
+          once: true
+        }
+      })
+
+      whyBikeTl
+        .to(whyChooseBikeRef.current, {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: 0.3
+        })
+        .to(whyChooseBikeRef.current, {
+          x: "+=5",
+          rotationZ: "+=1.5",
+          duration: 2.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1
+        }, "-=0.2")
+    }
+
+    // Content reveals for Why Choose section
+    const whyChooseTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: whyChooseRef.current,
+        start: "top 75%",
+        once: true
+      }
+    })
+
+    // Why Choose header and content
+    whyChooseTl.fromTo(".why-choose-text",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+    )
+
+    // Bullet points with stagger
+    whyChooseTl.fromTo(".why-choose-text .flex",
+      { opacity: 0, y: 16 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.1
+      },
+      "-=0.4"
+    )
+
+    // CTA button
+    whyChooseTl.fromTo(".why-choose-text .btn-secondary",
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+      "-=0.2"
+    )
+
+    // Stats cards with stagger
+    whyChooseTl.fromTo(".stat-card",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.08
+      },
+      "-=0.3"
+    )
+
+    // Mouse tilt disabled to prevent animation conflicts
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
   return (
     <div>
       {/* Hero Section with Carousel */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Carousel Images */}
-        <div className="absolute inset-0">
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: scrollY * 0.5 }}
+        >
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -65,22 +424,20 @@ export default function Home() {
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <OptimizedImage
+              <img
                 src={slide.image}
                 alt={slide.alt}
                 loading={index <= 1 ? 'eager' : 'lazy'}
-                priority={index === 0}
                 className={`w-full h-full object-cover ${
                   index === 0 ? 'carousel-image-first' :
                   index === 1 ? 'carousel-image-second' :
                   'mobile-optimized-img'
                 }`}
-                placeholder={index > 1}
               />
               <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Carousel Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
@@ -100,58 +457,183 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 text-center text-white container-pad">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-<span style={{color: '#ffbe00'}}>Makweleng</span><br />
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold mb-4"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <span style={{color: '#ffbe00'}}>Makweleng</span><br />
               Grocery & Butchery
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 font-light opacity-90">
+            </motion.h1>
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              <p className="text-lg md:text-xl font-medium text-amber-200 italic">
+                "Your convenience is our Priority"
+              </p>
+            </motion.div>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 font-light opacity-90"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               Makweleng Grocery, Butchery and delivery • Makweleng Liquor store • Makweleng Restaurant and Events venue — serving Makweleng Village with pride for over a decade.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300">
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
+              <motion.a
+                href="https://wa.me/27724746047"
+                className="btn-primary text-xl px-12 py-6"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
                 Order Now
-              </a>
-              <a href="#services" className="btn-secondary text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300">
+              </motion.a>
+              <motion.a
+                href="#services"
+                className="btn-secondary text-xl px-12 py-6"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
                 Our Services
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="container-pad">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Makweleng</h2>
-            <p className="text-xl text-gray-600">Family-run. Community-driven. Over a decade serving Makweleng with pride.</p>
+      <section
+        ref={servicesRef}
+        id="services"
+        className="py-20 bg-gray-50 relative overflow-hidden"
+        style={{ perspective: '900px' }}
+      >
+        {/* Story Pipeline: Butcher → Meat → Delivery → BBQ (left to right) */}
+
+        {/* 1. BUTCHER (Prep) - Far left edge, facing inward */}
+        <div
+          ref={butcherRef}
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 md:w-48 md:h-48 lg:w-64 lg:h-64 z-5 hidden md:block"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={butcherImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        {/* 2. MEAT (Product Quality) - Small accent near heading, upper right */}
+        <div
+          ref={meatRef}
+          className="absolute top-16 right-8 w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 z-5 hidden sm:block"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={meatImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        {/* 3. DELIVERY BIKE - Near first card, angled toward cards */}
+        <div
+          ref={deliveryBikeRef}
+          className="absolute bottom-1/3 left-1/4 w-10 h-10 sm:w-14 sm:h-14 md:w-32 md:h-32 lg:w-40 lg:h-40 z-5"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={deliveryBikeImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        {/* 4. BBQ STAND - Far right edge, angled inward */}
+        <div
+          ref={braaiStandRef}
+          className="absolute right-0 bottom-8 w-16 h-16 md:w-40 md:h-40 lg:w-48 lg:h-48 z-5 hidden md:block"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={braaiStandImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="container-pad relative z-20">
+          <div className="text-center mb-16 services-header">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <p className="text-xl text-gray-600">From prep to delivery — we handle every step with care and precision.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 services-grid">
             {/* Service 1 - Delivery */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
-<Truck size={32} />
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
+                style={{backgroundColor: '#ffbe00'}}
+              >
+                <Truck size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Doorstep Delivery</h3>
-              <p className="text-gray-600 mb-4">Reliable delivery from orders of R500+. No more queues, no more heavy bags — we bring quality to your door.</p>
+              <p className="text-gray-600 mb-4">Reliable delivery for orders over R500, quality brought to your doorstep, no queues or travel.</p>
               <div className="font-semibold" style={{color: '#ffbe00'}}>Free delivery after 6 orders</div>
             </div>
 
             {/* Service 2 - Meat */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#9b5f44'}}>
-<Beef size={32} />
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
+                style={{backgroundColor: '#9b5f44'}}
+              >
+                <Beef size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Precision Meat Cutting</h3>
-              <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Expert butchers ensuring perfect cuts every time.</p>
+              <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Trust us with your meat needs.</p>
               <div className="font-semibold" style={{color: '#9b5f44'}}>Freshness guaranteed</div>
             </div>
 
             {/* Service 3 - Complete */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
-<ShoppingCart size={32} />
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
+                style={{backgroundColor: '#ffbe00'}}
+              >
+                <ShoppingCart size={32} />
               </div>
               <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>One-Stop Groceries</h3>
               <p className="text-gray-600 mb-4">Staples, electricity & DSTV payments, airtime, and more. Everything you need in one convenient location.</p>
@@ -160,15 +642,58 @@ export default function Home() {
           </div>
 
         </div>
+
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
-        <div className="container-pad">
+      <section
+        ref={whyChooseRef}
+        className="py-20 bg-white relative overflow-hidden"
+        style={{ perspective: '900px' }}
+      >
+        {/* Quality + Speed Focus */}
+
+        {/* MEAT (Quality Badge) - Near heading, facing inward */}
+        <div
+          ref={whyChooseMeatRef}
+          className="absolute top-8 left-8 w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 z-5 hidden sm:block"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={meatImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        {/* DELIVERY BIKE (Speed) - Bottom right near stats, angled toward content */}
+        <div
+          ref={whyChooseBikeRef}
+          className="absolute bottom-16 right-4 w-10 h-10 sm:w-14 sm:h-14 md:w-40 md:h-40 lg:w-48 lg:h-48 z-5"
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+          aria-hidden="true"
+        >
+          <img
+            src={deliveryBikeImage}
+            alt=""
+            className="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="container-pad relative z-20">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-16 items-center why-choose-content">
               {/* Content */}
-              <div>
+              <div className="why-choose-text">
                 <h2 className="text-4xl font-bold mb-6" style={{color: '#9b5f44'}}>
                   Why Choose <span style={{color: '#ffbe00'}}>Makweleng</span>?
                 </h2>
@@ -222,20 +747,20 @@ export default function Home() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-8">
-                <div className="text-center p-8 bg-gray-50 rounded-xl">
+              <div className="grid grid-cols-2 gap-8 why-choose-stats">
+                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
                   <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>500+</div>
                   <div className="text-gray-600 font-medium">Happy Customers</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
                   <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>10+</div>
                   <div className="text-gray-600 font-medium">Years Serving</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
                   <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>5★</div>
                   <div className="text-gray-600 font-medium">Service Rating</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl">
+                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
                   <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>24/7</div>
                   <div className="text-gray-600 font-medium">WhatsApp Support</div>
                 </div>

@@ -70,30 +70,206 @@
   /* Contact page image positioning */
   .contact-image-mobile {
     object-fit: cover;
-    object-position: center 35%; /* Position to show meat content */
+    object-position: center 25%; /* Position to show meat content prominently */
   }
 
   @media (min-width: 640px) {
     .contact-image-mobile {
-      object-position: center 30%; /* Desktop - show meat content clearly */
+      object-position: center 25%; /* Desktop - show meat content clearly at top */
     }
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-lg transition-all duration-300 hover:shadow-lg;
-    background: #ffbe00;
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-lg;
+    background: linear-gradient(135deg, #ffbe00 0%, #e6a800 100%);
     color: #000;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 190, 0, 0.3);
+    /* Remove transition-all that can conflict with GSAP */
   }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
   .btn-primary:hover {
-    background: #e6ab00;
+    background: linear-gradient(135deg, #e6a800 0%, #cc9500 100%);
+    /* Remove transform that can conflict with GSAP */
+    box-shadow: 0 8px 25px rgba(255, 190, 0, 0.4);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-white font-semibold text-lg rounded-lg border-2 transition-all duration-300;
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-lg border-2;
+    background: rgba(255, 255, 255, 0.9);
     color: #9b5f44;
     border-color: #9b5f44;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    /* Remove transition-all that can conflict with GSAP */
   }
+
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #9b5f44 0%, #7a4a36 100%);
+    transition: width 0.3s ease;
+    z-index: -1;
+  }
+
+  .btn-secondary:hover::before {
+    width: 100%;
+  }
+
   .btn-secondary:hover {
-    background: #f7f3f0;
+    color: white;
+    border-color: #9b5f44;
+    /* Remove transform that can conflict with GSAP */
+    box-shadow: 0 8px 25px rgba(155, 95, 68, 0.3);
   }
+
+  /* GSAP-driven animation containers - minimal CSS to avoid conflicts */
+  .gsap-image-container {
+    pointer-events: none !important;
+    user-select: none;
+    backface-visibility: hidden;
+    transform-origin: center center;
+  }
+
+  /* Accessibility: Disable animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .gsap-image-container {
+      transform: none !important;
+      animation: none !important;
+    }
+
+    .gsap-image-container img {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Performance optimization - lighter containment */
+  .story-image-container {
+    contain: layout paint;
+  }
+
+  /* Smooth scrolling optimization */
+  #services, section[id*="why"] {
+    contain: layout paint;
+  }
+
+  /* Service cards - GSAP controlled, no CSS animations or transforms */
+  .service-card {
+    /* Remove ALL conflicting CSS transforms and transitions */
+    backface-visibility: hidden;
+    contain: layout paint;
+    /* Remove hover transforms that conflict with GSAP */
+  }
+
+  /* Service icons - remove hover transforms that conflict with GSAP */
+  .service-icon {
+    backface-visibility: hidden;
+    transform-origin: center center;
+    position: relative;
+    z-index: 1;
+    /* Remove all CSS transforms and transitions */
+  }
+
+  /* Services header - GSAP controlled, no CSS animations */
+  .services-header {
+    /* Remove conflicting CSS animations - GSAP handles all motion */
+    backface-visibility: hidden;
+    contain: layout paint;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Optimize grid performance */
+  .services-grid {
+    contain: layout;
+  }
+
+  /* Why Choose section - GSAP controlled, no CSS animations */
+  .why-choose-text {
+    /* Remove conflicting CSS animations - GSAP handles all motion */
+    backface-visibility: hidden;
+    contain: layout paint;
+    position: relative;
+    z-index: 10;
+  }
+
+  .stat-card {
+    /* Remove conflicting CSS animations - GSAP handles all motion */
+    backface-visibility: hidden;
+    contain: layout paint;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Clean slate - no CSS animations or transforms */
+  @media (prefers-reduced-motion: reduce) {
+    /* GSAP handles reduced motion automatically */
+    * {
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* Mobile-specific fixes to prevent overlapping and amateur look */
+  @media (max-width: 640px) {
+    /* Services section - professional mobile layout */
+    #services {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    #services .story-image-container {
+      opacity: 0.75;
+      z-index: 1 !important;
+    }
+
+    /* Services header - more top padding to avoid overlaps */
+    #services .services-header {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Why Choose section - better mobile spacing */
+    .why-choose-content {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Ensure story images don't interfere with touch interactions */
+    .story-image-container {
+      pointer-events: none !important;
+      touch-action: none;
+    }
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .story-image-container {
+      opacity: 0.9;
+    }
+  }
+
 }

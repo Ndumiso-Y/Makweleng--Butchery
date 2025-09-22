@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { getOptimizedImageSrc, generateSrcSet } from '../utils/imageOptimization'
 
 export default function OptimizedImage({
   src,
@@ -8,6 +9,7 @@ export default function OptimizedImage({
   priority = false,
   fallback = null,
   placeholder = true,
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
   ...props
 }) {
   const [hasError, setHasError] = useState(false)
@@ -82,7 +84,9 @@ export default function OptimizedImage({
       {/* Render image only when in view or priority */}
       {(isInView || priority || loading === 'eager') && (
         <img
-          src={src}
+          src={getOptimizedImageSrc(src)}
+          srcSet={generateSrcSet(src)}
+          sizes={sizes}
           alt={alt}
           className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-out`}
           loading={priority ? 'eager' : loading}

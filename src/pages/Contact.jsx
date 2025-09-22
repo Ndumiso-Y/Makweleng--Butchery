@@ -1,4 +1,3 @@
-import OptimizedImage from '../components/OptimizedImage'
 import assortedMeat from '../assets/raw-meat-steaks-on-a-dark-background-ready-to-roas-2025-02-12-22-41-18-utc.jpg'
 
 export default function Contact() {
@@ -7,12 +6,11 @@ export default function Contact() {
       {/* Hero Section with New Cover Image */}
       <section className="relative overflow-hidden bg-black min-h-[80vh]">
         <div className="absolute inset-0">
-          <OptimizedImage
+          <img
             src={assortedMeat}
             alt="Professional butcher tools and fresh meat cuts"
             className="w-full h-full opacity-75 contact-image-mobile"
             loading="eager"
-            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-50"></div>
         </div>

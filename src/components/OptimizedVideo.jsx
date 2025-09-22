@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { getOptimizedVideoSrc } from '../utils/imageOptimization'
 
 export default function OptimizedVideo({
   src,
@@ -52,6 +53,8 @@ export default function OptimizedVideo({
     setIsLoading(false)
   }
 
+  const optimizedSources = getOptimizedVideoSrc(src)
+
   if (hasError) {
     if (fallback) {
       return fallback
@@ -89,12 +92,14 @@ export default function OptimizedVideo({
           onError={handleError}
           onLoadStart={handleLoadStart}
           onCanPlay={handleCanPlay}
-          poster={poster}
+          poster={poster || optimizedSources.poster}
           preload={priority ? 'auto' : lazy ? 'none' : 'metadata'}
           autoPlay={autoplay}
           playsInline
           {...props}
         >
+          <source src={optimizedSources.webm} type="video/webm" />
+          <source src={optimizedSources.mp4} type="video/mp4" />
           <source src={src} type="video/mp4" />
           Your browser does not support the video tag.
         </video>

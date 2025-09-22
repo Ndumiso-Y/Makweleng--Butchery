@@ -17,6 +17,17 @@ export default defineConfig(({ command, mode }) => {
             vendor: ['react', 'react-dom'],
             router: ['react-router-dom'],
             icons: ['lucide-react']
+          },
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.')
+            const ext = info[info.length - 1]
+            if (/\.(mp4|webm|avi|mov)$/.test(assetInfo.name)) {
+              return `assets/videos/[name]-[hash].${ext}`
+            }
+            if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico|webp)$/.test(assetInfo.name)) {
+              return `assets/images/[name]-[hash].${ext}`
+            }
+            return `assets/[name]-[hash].${ext}`
           }
         }
       },
