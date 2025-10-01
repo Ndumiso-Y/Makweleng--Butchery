@@ -12,7 +12,8 @@
       "Bash(ffmpeg:*)",
       "Bash(xargs rm:*)",
       "Bash(find:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
