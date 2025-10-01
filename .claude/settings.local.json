@@ -7,7 +7,12 @@
       "Bash(git add:*)",
       "WebFetch(domain:gulland.co.za)",
       "WebFetch(domain:ndumiso-y.github.io)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(rm:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(xargs rm:*)",
+      "Bash(find:*)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []

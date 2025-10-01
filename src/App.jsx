@@ -9,8 +9,8 @@ import Promotions from './pages/Promotions'
 import Contact from './pages/Contact'
 
 export default function App() {
-  // Handle GitHub Pages base path
-  const basename = import.meta.env.PROD ? '/Makweleng--Butchery' : ''
+  // Handle base path for deployment
+  const basename = ''
 
   return (
     <Router basename={basename}>

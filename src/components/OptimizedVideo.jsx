@@ -72,10 +72,10 @@ export default function OptimizedVideo({
   }
 
   return (
-    <div ref={videoRef} className="relative overflow-hidden">
+    <div ref={videoRef} className="relative overflow-hidden w-full h-full">
       {/* Loading placeholder */}
       {isLoading && (
-        <div className={`absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center ${className}`}>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
           <div className="text-amber-600 text-center">
             <svg className="w-10 h-10 mx-auto mb-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1M9 16a3 3 0 01-3-3V7a3 3 0 013-3h6a3 3 0 013 3v6a3 3 0 01-3 3" />

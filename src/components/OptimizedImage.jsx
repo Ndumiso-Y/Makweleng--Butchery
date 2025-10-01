@@ -68,10 +68,10 @@ export default function OptimizedImage({
   }
 
   return (
-    <div ref={imgRef} className="relative overflow-hidden">
+    <div ref={imgRef} className="relative overflow-hidden w-full h-full">
       {/* Enhanced placeholder with brand colors */}
       {placeholder && isLoading && (
-        <div className={`absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 animate-pulse flex items-center justify-center ${className}`}>
+        <div className={`absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 animate-pulse flex items-center justify-center`}>
           <div className="text-amber-600 text-center">
             <svg className="w-8 h-8 mx-auto mb-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" strokeWidth="2" strokeDasharray="31.416" strokeLinecap="round" />

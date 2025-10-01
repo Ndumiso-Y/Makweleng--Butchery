@@ -5,17 +5,26 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Coffee-inspired brand palette
+        americano: '#1E1D1D', // primary dark / background
+        brew: '#303031',      // secondary dark / text on light
+        mocha: '#5A4D41',     // primary brown / surfaces, buttons
+        chai: '#7E6957',      // secondary brown / cards, sections
+        roast: '#867C70',     // neutral / borders, muted text
+        rusty: '#953A0B',     // accent / CTAs, links, highlights
+
+        // Legacy colors maintained for backward compatibility
         primary: {
           50: '#fef2f2',
           100: '#fee2e2',
           200: '#fecaca',
           300: '#fca5a5',
           400: '#f87171',
-          500: '#d63031',
-          600: '#b71c1c',
-          700: '#9f1311',
-          800: '#7f1d1d',
-          900: '#5f1515'
+          500: '#953A0B', // Maps to rusty
+          600: '#7a2f09',
+          700: '#5a2307',
+          800: '#3a1704',
+          900: '#1a0a02'
         },
         accent: {
           50: '#f7f3f0',
@@ -23,11 +32,11 @@ export default {
           200: '#d4c3b0',
           300: '#c0a98c',
           400: '#a68b5b',
-          500: '#8b6914',
-          600: '#6d5018',
+          500: '#7E6957', // Maps to chai
+          600: '#5A4D41', // Maps to mocha
           700: '#4f3a0e',
           800: '#332509',
-          900: '#1a1304'
+          900: '#1E1D1D'  // Maps to americano
         },
         neutral: {
           25: '#fefefe',
@@ -36,10 +45,10 @@ export default {
           200: '#e8eaed',
           300: '#dadce0',
           400: '#9aa0a6',
-          500: '#5f6368',
-          600: '#3c4043',
-          700: '#2c2b29',
-          800: '#202124',
+          500: '#867C70', // Maps to roast
+          600: '#5A4D41', // Maps to mocha
+          700: '#303031', // Maps to brew
+          800: '#1E1D1D', // Maps to americano
           900: '#171717'
         },
         success: {
@@ -47,7 +56,7 @@ export default {
           600: '#138d75'
         },
         amber: '#FFBF00',
-        meat: '#9b5f44'
+        meat: '#7E6957' // Maps to chai
       },
       boxShadow: {
         'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

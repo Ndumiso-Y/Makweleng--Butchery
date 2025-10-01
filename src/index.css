@@ -43,26 +43,14 @@
     }
   }
 
-  /* Carousel image positioning for first image */
+  /* Carousel image positioning for first image - meat */
   .carousel-image-first {
     object-fit: cover;
-    object-position: 73% top;
+    object-position: 65% center; /* Moved left to focus on meat better */
   }
 
   @media (min-width: 640px) {
     .carousel-image-first {
-      object-position: center center;
-    }
-  }
-
-  /* Carousel image positioning for second image */
-  .carousel-image-second {
-    object-fit: cover;
-    object-position: 48% top;
-  }
-
-  @media (min-width: 640px) {
-    .carousel-image-second {
       object-position: center center;
     }
   }
@@ -79,13 +67,79 @@
     }
   }
 
+  /* Loyalty card image - show woman and card on mobile */
+  .loyalty-card-image {
+    object-fit: cover;
+    object-position: 42% center; /* Fine-tuned to show woman with loyalty card clearly */
+  }
+
+  @media (min-width: 640px) {
+    .loyalty-card-image {
+      object-position: center center; /* Full view on desktop */
+    }
+  }
+
+  /* Delivery man image - show delivery person with bag */
+  .delivery-man-image {
+    object-fit: cover;
+    object-position: 55% top; /* Positioned to fill tall mobile screens, driver in focus */
+  }
+
+  @media (min-width: 640px) {
+    .delivery-man-image {
+      object-position: center center; /* Full view on desktop */
+    }
+  }
+
+  /* Shopping woman image - show woman with groceries */
+  .shopping-woman-image {
+    object-fit: cover;
+    object-position: 55% center; /* Show woman with shopping on mobile */
+  }
+
+  @media (min-width: 640px) {
+    .shopping-woman-image {
+      object-position: center center; /* Full view on desktop */
+    }
+  }
+
+  /* Braai stand image - show grill prominently */
+  .braai-stand-image {
+    object-fit: cover;
+    object-position: center center; /* Center the braai stand */
+  }
+
+  /* Bike image - show bike and delivery items */
+  .bike-image {
+    object-fit: cover;
+    object-position: 45% center; /* Show bike prominently on mobile */
+  }
+
+  @media (min-width: 640px) {
+    .bike-image {
+      object-position: center center; /* Full view on desktop */
+    }
+  }
+
+  /* Food delivery video background - keep driver visible */
+  .food-delivery-video {
+    object-fit: cover;
+    object-position: 50% 30%; /* Centered horizontally, 30% from top to show driver */
+  }
+
+  @media (min-width: 640px) {
+    .food-delivery-video {
+      object-position: center center; /* Full view on desktop */
+    }
+  }
+
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-lg;
-    background: linear-gradient(135deg, #ffbe00 0%, #e6a800 100%);
-    color: #000;
+    background: linear-gradient(135deg, #953A0B 0%, #7a2f09 100%);
+    color: #fff;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(255, 190, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(149, 58, 11, 0.3);
     /* Remove transition-all that can conflict with GSAP */
   }
 
@@ -96,7 +150,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
   }
 
@@ -105,16 +159,16 @@
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #e6a800 0%, #cc9500 100%);
+    background: linear-gradient(135deg, #7a2f09 0%, #5a2307 100%);
     /* Remove transform that can conflict with GSAP */
-    box-shadow: 0 8px 25px rgba(255, 190, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(149, 58, 11, 0.5);
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-lg border-2;
     background: rgba(255, 255, 255, 0.9);
-    color: #9b5f44;
-    border-color: #9b5f44;
+    color: #5A4D41;
+    border-color: #7E6957;
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
@@ -128,7 +182,7 @@
     left: 0;
     width: 0;
     height: 100%;
-    background: linear-gradient(135deg, #9b5f44 0%, #7a4a36 100%);
+    background: linear-gradient(135deg, #5A4D41 0%, #303031 100%);
     transition: width 0.3s ease;
     z-index: -1;
   }
@@ -139,9 +193,9 @@
 
   .btn-secondary:hover {
     color: white;
-    border-color: #9b5f44;
+    border-color: #5A4D41;
     /* Remove transform that can conflict with GSAP */
-    box-shadow: 0 8px 25px rgba(155, 95, 68, 0.3);
+    box-shadow: 0 8px 25px rgba(90, 77, 65, 0.3);
   }
 
   /* GSAP-driven animation containers - minimal CSS to avoid conflicts */

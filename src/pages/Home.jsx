@@ -4,15 +4,15 @@ import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import OptimizedImage from '../components/OptimizedImage'
-import image1 from '../assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg'
-import image2 from '../assets/Delivery-in-yellow.jpg'
-import image3 from '../assets/women-buying-groceries.jpg'
-import image4 from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
+import image1 from '../assets/raw-beef-steaks-optimized.webp'
+import image2 from '../assets/DeliveryMan-RustedOrgange.png'
+import image3 from '../assets/WomenShopping-RustedOrgange.webp'
+import image4 from '../assets/grilled-kebabs-optimized.webp'
 // Story-driven narrative assets (in narrative order)
-import butcherImage from '../assets/ManCutting-compressed.png' // 1. Butcher with knife & cutting board (prep)
-import meatImage from '../assets/isolated meat 4-transparent.png' // 2. Picture of meat (product quality)
-import braaiStandImage from '../assets/braai-stand.png' // 3. BBQ stand (cooking/serving)
-import deliveryBikeImage from '../assets/isolated-bike.png' // 4. Delivery bike (fulfillment)
+import butcherImage from '../assets/ManCutting-optimized.webp' // 1. Butcher with knife & cutting board (prep)
+import meatImage from '../assets/isolated-meat-4-optimized.webp' // 2. Picture of meat (product quality)
+import braaiStandImage from '../assets/BraaiStand-RustedOrgange.png' // 3. BBQ stand (cooking/serving)
+import deliveryBikeImage from '../assets/Bike-RustedOrgange.png' // 4. Delivery bike (fulfillment)
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -430,7 +430,8 @@ export default function Home() {
                 loading={index <= 1 ? 'eager' : 'lazy'}
                 className={`w-full h-full object-cover ${
                   index === 0 ? 'carousel-image-first' :
-                  index === 1 ? 'carousel-image-second' :
+                  index === 1 ? 'delivery-man-image' :
+                  index === 2 ? 'shopping-woman-image' :
                   'mobile-optimized-img'
                 }`}
               />
@@ -447,7 +448,7 @@ export default function Home() {
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-yellow-400 scale-125'
+                  ? 'bg-rusty scale-125'
                   : 'bg-white bg-opacity-50 hover:bg-opacity-75'
               }`}
             />
@@ -463,7 +464,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <span style={{color: '#ffbe00'}}>Makweleng</span><br />
+              <span className="text-rusty">Makweleng</span><br />
               Grocery & Butchery
             </motion.h1>
             <motion.div
@@ -472,7 +473,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <p className="text-lg md:text-xl font-medium text-amber-200 italic">
+              <p className="text-lg md:text-xl font-medium text-rusty italic">
                 "Your convenience is our Priority"
               </p>
             </motion.div>
@@ -517,7 +518,7 @@ export default function Home() {
       <section
         ref={servicesRef}
         id="services"
-        className="py-20 bg-gray-50 relative overflow-hidden"
+        className="py-20 bg-white relative overflow-hidden"
         style={{ perspective: '900px' }}
       >
         {/* Story Pipeline: Butcher → Meat → Delivery → BBQ (left to right) */}
@@ -571,7 +572,7 @@ export default function Home() {
           <img
             src={deliveryBikeImage}
             alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
+            className="w-full h-full object-contain filter drop-shadow-lg bike-image"
             loading="lazy"
           />
         </div>
@@ -589,55 +590,52 @@ export default function Home() {
           <img
             src={braaiStandImage}
             alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
+            className="w-full h-full object-contain filter drop-shadow-lg braai-stand-image"
             loading="lazy"
           />
         </div>
 
         <div className="container-pad relative z-20">
           <div className="text-center mb-16 services-header">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600">From prep to delivery — we handle every step with care and precision.</p>
+            <h2 className="text-4xl font-bold text-chai mb-4">Our Services</h2>
+            <p className="text-xl text-brew">From prep to delivery — we handle every step with care and precision.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 services-grid">
             {/* Service 1 - Delivery */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
-                style={{backgroundColor: '#ffbe00'}}
+                className="w-16 h-16 bg-rusty rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
-                <Truck size={32} />
+                <Truck size={32} className="text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Doorstep Delivery</h3>
+              <h3 className="text-2xl font-bold mb-4 text-chai">Doorstep Delivery</h3>
               <p className="text-gray-600 mb-4">Reliable delivery for orders over R500, quality brought to your doorstep, no queues or travel.</p>
-              <div className="font-semibold" style={{color: '#ffbe00'}}>Free delivery after 6 orders</div>
+              <div className="font-semibold text-rusty">Free delivery after 6 orders</div>
             </div>
 
             {/* Service 2 - Meat */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
-                style={{backgroundColor: '#9b5f44'}}
+                className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
-                <Beef size={32} />
+                <Beef size={32} className="text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>Precision Meat Cutting</h3>
+              <h3 className="text-2xl font-bold mb-4 text-chai">Precision Meat Cutting</h3>
               <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Trust us with your meat needs.</p>
-              <div className="font-semibold" style={{color: '#9b5f44'}}>Freshness guaranteed</div>
+              <div className="font-semibold text-chai">Freshness guaranteed</div>
             </div>
 
             {/* Service 3 - Complete */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card">
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
-                style={{backgroundColor: '#ffbe00'}}
+                className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
-                <ShoppingCart size={32} />
+                <ShoppingCart size={32} className="text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4" style={{color: '#9b5f44'}}>One-Stop Groceries</h3>
+              <h3 className="text-2xl font-bold mb-4 text-chai">One-Stop Groceries</h3>
               <p className="text-gray-600 mb-4">Staples, electricity & DSTV payments, airtime, and more. Everything you need in one convenient location.</p>
-              <div className="font-semibold" style={{color: '#ffbe00'}}>Complete convenience</div>
+              <div className="font-semibold text-rusty">Complete convenience</div>
             </div>
           </div>
 
@@ -648,7 +646,7 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section
         ref={whyChooseRef}
-        className="py-20 bg-white relative overflow-hidden"
+        className="py-20 bg-brew relative overflow-hidden"
         style={{ perspective: '900px' }}
       >
         {/* Quality + Speed Focus */}
@@ -684,7 +682,7 @@ export default function Home() {
           <img
             src={deliveryBikeImage}
             alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
+            className="w-full h-full object-contain filter drop-shadow-lg bike-image"
             loading="lazy"
           />
         </div>
@@ -694,53 +692,53 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-16 items-center why-choose-content">
               {/* Content */}
               <div className="why-choose-text">
-                <h2 className="text-4xl font-bold mb-6" style={{color: '#9b5f44'}}>
-                  Why Choose <span style={{color: '#ffbe00'}}>Makweleng</span>?
+                <h2 className="text-4xl font-bold mb-6 text-white">
+                  Why Choose <span className="text-rusty">Makweleng</span>?
                 </h2>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                <p className="text-xl text-white leading-relaxed mb-8">
                   For over a decade, we've been proudly serving the Makweleng Village community with premium meat cuts, fresh groceries, and reliable delivery services.
                 </p>
 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                    <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center mr-4">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>10+ Years Experience</h3>
-                      <p className="text-gray-600">Trusted by the community for over a decade</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">10+ Years Experience</h3>
+                      <p className="text-gray-300">Trusted by the community for over a decade</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                    <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center mr-4">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>A-Grade Quality</h3>
-                      <p className="text-gray-600">Premium cuts and fresh products guaranteed</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">A-Grade Quality</h3>
+                      <p className="text-gray-300">Premium cuts and fresh products guaranteed</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{backgroundColor: '#ffbe00'}}>
+                    <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center mr-4">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2" style={{color: '#9b5f44'}}>Free Delivery</h3>
-                      <p className="text-gray-600">After 6 orders - convenience at your doorstep</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">Free Delivery</h3>
+                      <p className="text-gray-300">After 6 orders - convenience at your doorstep</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8">
-                  <a href="/about" className="btn-secondary px-8 py-3" style={{color: '#9b5f44', borderColor: '#9b5f44'}}>
+                <div className="mt-8 pb-4">
+                  <a href="/about" className="inline-block border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-brew transition-all duration-300">
                     Learn More About Us
                   </a>
                 </div>
@@ -748,20 +746,20 @@ export default function Home() {
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-8 why-choose-stats">
-                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
-                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>500+</div>
+                <div className="text-center p-8 bg-white rounded-xl stat-card">
+                  <div className="text-4xl font-bold mb-2 text-rusty">500+</div>
                   <div className="text-gray-600 font-medium">Happy Customers</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
-                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>10+</div>
+                <div className="text-center p-8 bg-white rounded-xl stat-card">
+                  <div className="text-4xl font-bold mb-2 text-rusty">10+</div>
                   <div className="text-gray-600 font-medium">Years Serving</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
-                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>5★</div>
+                <div className="text-center p-8 bg-white rounded-xl stat-card">
+                  <div className="text-4xl font-bold mb-2 text-rusty">5★</div>
                   <div className="text-gray-600 font-medium">Service Rating</div>
                 </div>
-                <div className="text-center p-8 bg-gray-50 rounded-xl stat-card">
-                  <div className="text-4xl font-bold mb-2" style={{color: '#ffbe00'}}>24/7</div>
+                <div className="text-center p-8 bg-white rounded-xl stat-card">
+                  <div className="text-4xl font-bold mb-2 text-rusty">24/7</div>
                   <div className="text-gray-600 font-medium">WhatsApp Support</div>
                 </div>
               </div>
@@ -771,14 +769,14 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-900 text-white">
+      <section id="contact" className="py-20 bg-americano text-white">
         <div className="container-pad text-center">
-          <h2 className="text-4xl font-bold mb-8" style={{color: '#ffbe00'}}>Order Today, Delivered to Your Doorstep</h2>
+          <h2 className="text-4xl font-bold mb-8 text-rusty">Order Today, Delivered to Your Doorstep</h2>
           <p className="text-xl text-gray-300 mb-8">Minimum order R500. Free delivery after 6 orders (T&Cs apply).</p>
 
           {/* Operational Hours */}
           <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-yellow-400 mb-4">Operational Hours</h3>
+            <h3 className="text-2xl font-bold text-rusty mb-4">Operational Hours</h3>
             <div className="grid md:grid-cols-2 gap-4 text-gray-300">
               <div>
                 <div className="font-semibold text-white mb-2">Monday - Saturday</div>
@@ -798,7 +796,7 @@ export default function Home() {
             <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
               WhatsApp 072 474 6047
             </a>
-            <a href="https://wa.me/27760114405" className="btn-secondary text-xl px-12 py-6 bg-white hover:bg-gray-100" style={{color: '#9b5f44'}}>
+            <a href="https://wa.me/27760114405" className="btn-secondary text-xl px-12 py-6 bg-white hover:bg-gray-100 text-chai">
               WhatsApp 076 011 4405
             </a>
           </div>

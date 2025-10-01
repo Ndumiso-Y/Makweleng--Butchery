@@ -14,26 +14,13 @@
     <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml">
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="./src/assets/raw-beef-steaks-2024-09-17-03-02-53-utc-Qs-9Wr_u.jpg" as="image" fetchpriority="high">
-    <link rel="preload" href="./src/assets/Delivery-in-yellow.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="./src/assets/raw-beef-steaks-optimized.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="./src/assets/Delivery-in-yellow-optimized.webp" as="image" fetchpriority="high">
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://wa.me" crossorigin>
-    <!-- GitHub Pages SPA routing fix -->
-    <script type="text/javascript">
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
   </head>
   <body class="bg-white text-gray-700">
     <div id="root"></div>

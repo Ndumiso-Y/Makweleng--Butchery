@@ -1,12 +1,12 @@
 
 import grillingVideo from '../assets/grilling.mp4'
-import assortedMeat from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
+import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 
 export default function BuyBraai() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Master the Art of Braai - Combined Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden min-h-[90vh] flex items-center">
+      <section className="py-20 bg-gradient-to-br from-brew via-americano to-brew relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Background Video - Integrated into UI */}
         <div className="absolute inset-0">
           <video
@@ -41,24 +41,24 @@ export default function BuyBraai() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <span className="text-lg">Premium A-grade meat cuts</span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <span className="text-lg">Expert braai techniques</span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -77,7 +77,7 @@ export default function BuyBraai() {
                   loading="lazy"
                 />
                 <div className="mt-6 text-center">
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">Premium Meat Selection</h3>
+                  <h3 className="text-2xl font-bold text-rusty mb-2">Premium Meat Selection</h3>
                   <p className="text-gray-300">Hand-selected cuts for the perfect braai experience</p>
                 </div>
               </div>
@@ -111,24 +111,24 @@ export default function BuyBraai() {
       </section>
 
       {/* Braai Packages */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container-pad">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4" style={{color: '#9b5f44'}}>Braai Packages</h2>
-            <p className="text-xl text-gray-600">Ready-made packages for your perfect braai</p>
+            <h2 className="text-4xl font-bold mb-4 text-chai">Braai Packages</h2>
+            <p className="text-xl text-brew">Ready-made packages for your perfect braai</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Family Package */}
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
+            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-roast">
+              <div className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-center" style={{color: '#9b5f44'}}>Family Package</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center text-chai">Family Package</h3>
               <div className="text-center mb-6">
-                <span className="text-3xl font-bold" style={{color: '#ffbe00'}}>R450</span>
+                <span className="text-3xl font-bold text-rusty">R450</span>
                 <span className="text-gray-600 ml-2">Serves 4-6</span>
               </div>
               <ul className="space-y-3 text-gray-600 mb-8">
@@ -163,18 +163,18 @@ export default function BuyBraai() {
             </div>
 
             {/* Premium Package */}
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 relative" style={{borderColor: '#ffbe00'}}>
+            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-rusty relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="px-4 py-2 text-sm font-bold text-white rounded-full" style={{backgroundColor: '#ffbe00'}}>Most Popular</span>
+                <span className="px-4 py-2 text-sm font-bold text-white bg-rusty rounded-full">Most Popular</span>
               </div>
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#9b5f44'}}>
+              <div className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-center" style={{color: '#9b5f44'}}>Premium Package</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center text-chai">Premium Package</h3>
               <div className="text-center mb-6">
-                <span className="text-3xl font-bold" style={{color: '#ffbe00'}}>R750</span>
+                <span className="text-3xl font-bold text-rusty">R750</span>
                 <span className="text-gray-600 ml-2">Serves 6-8</span>
               </div>
               <ul className="space-y-3 text-gray-600 mb-8">
@@ -215,15 +215,15 @@ export default function BuyBraai() {
             </div>
 
             {/* Basic Package */}
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{backgroundColor: '#ffbe00'}}>
+            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-roast">
+              <div className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-center" style={{color: '#9b5f44'}}>Basic Package</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center text-chai">Basic Package</h3>
               <div className="text-center mb-6">
-                <span className="text-3xl font-bold" style={{color: '#ffbe00'}}>R280</span>
+                <span className="text-3xl font-bold text-rusty">R280</span>
                 <span className="text-gray-600 ml-2">Serves 2-4</span>
               </div>
               <ul className="space-y-3 text-gray-600 mb-8">
@@ -261,7 +261,7 @@ export default function BuyBraai() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-americano">
         <div className="container-pad text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Braai?</h2>
           <p className="text-xl text-gray-300 mb-8">Order your braai package today and get free delivery on orders over R500</p>
@@ -269,7 +269,7 @@ export default function BuyBraai() {
             <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
               WhatsApp Order
             </a>
-            <a href="tel:0724746047" className="btn-secondary text-xl px-12 py-6 bg-white text-yellow-600 hover:bg-gray-100" style={{color: '#9b5f44'}}>
+            <a href="tel:0724746047" className="btn-secondary text-xl px-12 py-6 bg-white text-chai hover:bg-gray-100">
               Call Now
             </a>
           </div>
