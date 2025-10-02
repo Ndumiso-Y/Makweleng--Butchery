@@ -10,7 +10,7 @@ import Contact from './pages/Contact'
 
 export default function App() {
   // Handle base path for deployment
-  const basename = ''
+  const basename = import.meta.env.MODE === 'production' ? '/Makweleng--Butchery' : ''
 
   return (
     <Router basename={basename}>
