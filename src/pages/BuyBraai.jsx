@@ -1,120 +1,173 @@
-
-import grillingVideo from '../assets/grilling.mp4'
-import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import image1 from '../assets/raw-beef-steaks-optimized.webp'
+import image2 from '../assets/DeliveryMan-RustedOrgange.png'
+import image3 from '../assets/WomenShopping-RustedOrgange.webp'
+import image4 from '../assets/grilled-kebabs-optimized.webp'
 
 export default function BuyBraai() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+
+  const slides = [
+    {
+      image: image1,
+      alt: "Premium raw beef steaks",
+      duration: 5000
+    },
+    {
+      image: image2,
+      alt: "Delivery service in yellow",
+      duration: 4000
+    },
+    {
+      image: image3,
+      alt: "Women buying groceries",
+      duration: 4000
+    },
+    {
+      image: image4,
+      alt: "Grilled kebabs and vegetables on barbecue",
+      duration: 4000
+    }
+  ]
+
+  useEffect(() => {
+    const preloadImages = [image1, image2]
+    preloadImages.forEach(src => {
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.href = src
+      link.fetchPriority = 'high'
+      document.head.appendChild(link)
+    })
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, slides[currentSlide].duration)
+
+    return () => clearInterval(timer)
+  }, [currentSlide, slides])
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Master the Art of Braai - Combined Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-brew via-americano to-brew relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Background Video - Integrated into UI */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-30"
-          >
-            <source src={grillingVideo} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
-        </div>
-
-        <div className="container-pad relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Content Side */}
-            <div className="text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Master the Art of <span style={{color: '#ffbe00'}}>Braai</span>
-              </h1>
-              <div className="mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{color: '#ffbe00'}}>
-                  Buy & Braai
-                </h2>
-                <p className="text-xl text-gray-300 mb-4 leading-relaxed">
-                  A‑grade, juicy T‑bone and fresh cuts for sit‑in braai or takeaway.
-                </p>
-              </div>
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Experience the authentic South African braai tradition with our premium cuts and expert techniques. From fire preparation to perfect timing, we bring you the complete braai experience.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Premium A-grade meat cuts</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Expert braai techniques</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Traditional South African flavors</span>
-                </div>
-              </div>
+      {/* Hero Section with Carousel - Braai Services */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Carousel Images */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: scrollY * 0.5 }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                loading={index <= 1 ? 'eager' : 'lazy'}
+                className={`w-full h-full object-cover ${
+                  index === 0 ? 'carousel-image-first' :
+                  index === 1 ? 'delivery-man-image' :
+                  index === 2 ? 'shopping-woman-image' :
+                  'mobile-optimized-img'
+                }`}
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
+          ))}
+        </motion.div>
 
-            {/* Image Side */}
-            <div className="relative">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl">
-                <img
-                  src={assortedMeat}
-                  alt="Assorted premium meat cuts"
-                  className="w-full h-80 rounded-xl shadow-2xl meat-image-mobile object-cover"
-                  loading="lazy"
-                />
-                <div className="mt-6 text-center">
-                  <h3 className="text-2xl font-bold text-rusty mb-2">Premium Meat Selection</h3>
-                  <p className="text-gray-300">Hand-selected cuts for the perfect braai experience</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'bg-rusty scale-125'
+                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
+            />
+          ))}
         </div>
 
-        {/* YouTube Video integrated into hero */}
-        <div className="container-pad relative mt-16">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-yellow-400 mb-4">Sizzling T-Bone Perfection</h3>
-            <p className="text-lg text-gray-300">Watch our premium cuts cook to perfection on the grill</p>
-          </div>
+        {/* Content */}
+        <div className="relative z-10 text-center text-white container-pad">
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-xl2 overflow-hidden shadow-2xl bg-black bg-opacity-50 backdrop-blur-sm">
-              <div className="relative aspect-video">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/yep3t_VE1IM?autoplay=1&mute=1&loop=1&playlist=yep3t_VE1IM"
-                  title="T-bone Steak Sizzling on Grill - Makweleng Butchery"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold mb-4"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Master the Art of <span className="text-rusty">Braai</span>
+            </motion.h1>
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              <p className="text-lg md:text-xl font-medium text-rusty italic">
+                "Premium Cuts & Expert Braai Techniques"
+              </p>
+            </motion.div>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 font-light opacity-90"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              Experience the authentic South African braai tradition with our A-grade, juicy T-bone and fresh cuts for sit-in braai or takeaway. From fire preparation to perfect timing, we bring you the complete braai experience.
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
+              <motion.a
+                href="https://wa.me/27724746047"
+                className="btn-primary text-xl px-12 py-6"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                Order Braai Package
+              </motion.a>
+              <motion.a
+                href="#packages"
+                className="btn-secondary text-xl px-12 py-6"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                View Packages
+              </motion.a>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Braai Packages */}
-      <section className="py-20 bg-white">
+      <section id="packages" className="py-20 bg-white">
         <div className="container-pad">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-chai">Braai Packages</h2>
+            <h2 className="text-4xl font-bold mb-4 text-chai">Braai Services</h2>
             <p className="text-xl text-brew">Ready-made packages for your perfect braai</p>
           </div>
 

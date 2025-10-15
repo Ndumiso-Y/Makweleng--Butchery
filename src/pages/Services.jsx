@@ -1,4 +1,5 @@
-
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Section from '../components/Section'
 import ServiceCard from '../components/ServiceCard'
 import OptimizedImage from '../components/OptimizedImage'
@@ -6,26 +7,130 @@ import OptimizedVideo from '../components/OptimizedVideo'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import deliveryImage from '../assets/DeliveryMan-RustedOrgange.png'
 import foodDeliveryVideo from '../assets/food-delivery.mp4'
+import image1 from '../assets/raw-beef-steaks-optimized.webp'
+import image2 from '../assets/DeliveryMan-RustedOrgange.png'
+import image3 from '../assets/WomenShopping-RustedOrgange.webp'
+import image4 from '../assets/grilled-kebabs-optimized.webp'
 
 export default function Services(){
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+
+  const slides = [
+    {
+      image: image1,
+      alt: "Premium raw beef steaks",
+      duration: 5000
+    },
+    {
+      image: image2,
+      alt: "Delivery service in yellow",
+      duration: 4000
+    },
+    {
+      image: image3,
+      alt: "Women buying groceries",
+      duration: 4000
+    },
+    {
+      image: image4,
+      alt: "Grilled kebabs and vegetables on barbecue",
+      duration: 4000
+    }
+  ]
+
+  useEffect(() => {
+    const preloadImages = [image1, image2]
+    preloadImages.forEach(src => {
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.href = src
+      link.fetchPriority = 'high'
+      document.head.appendChild(link)
+    })
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, slides[currentSlide].duration)
+
+    return () => clearInterval(timer)
+  }, [currentSlide, slides])
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div>
-      {/* Hero Section with New Cover Image */}
-      <section className="relative overflow-hidden bg-black min-h-[80vh]">
-        <div className="absolute inset-0">
-          <OptimizedImage
-            src={deliveryImage}
-            alt="Delivery service with groceries"
-            className="w-full h-full opacity-70 delivery-man-image"
-            loading="eager"
-            priority={true}
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      {/* Hero Section with Carousel */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Carousel Images */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: scrollY * 0.5 }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                loading={index <= 1 ? 'eager' : 'lazy'}
+                className={`w-full h-full object-cover ${
+                  index === 0 ? 'carousel-image-first' :
+                  index === 1 ? 'delivery-man-image' :
+                  index === 2 ? 'shopping-woman-image' :
+                  'mobile-optimized-img'
+                }`}
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'bg-rusty scale-125'
+                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
+            />
+          ))}
         </div>
-        <div className="relative container-pad text-center flex items-center justify-center min-h-[80vh]">
-          <div className="hero-content">
-            <h1 className="text-white mb-8 drop-shadow-lg animate-fade-up text-5xl md:text-6xl font-bold">Our Services</h1>
-            <p className="text-xl text-white font-medium max-w-3xl mx-auto drop-shadow-md animate-fade-up-delay">Doorstep delivery, precision meat cutting & storage, and comprehensive groceries — all designed for your convenience.</p>
+
+        {/* Content */}
+        <div className="relative z-10 text-center text-white container-pad">
+          <div className="max-w-4xl mx-auto">
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold mb-8"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Our <span className="text-rusty">Services</span>
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 font-light opacity-90"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              Doorstep delivery, precision meat cutting & storage, and comprehensive groceries — all designed for your convenience.
+            </motion.p>
           </div>
         </div>
       </section>

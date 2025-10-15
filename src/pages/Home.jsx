@@ -4,10 +4,8 @@ import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import OptimizedImage from '../components/OptimizedImage'
-import image1 from '../assets/raw-beef-steaks-optimized.webp'
-import image2 from '../assets/DeliveryMan-RustedOrgange.png'
-import image3 from '../assets/WomenShopping-RustedOrgange.webp'
-import image4 from '../assets/grilled-kebabs-optimized.webp'
+import grillingVideo from '../assets/grilling.mp4'
+import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 // Story-driven narrative assets (in narrative order)
 import butcherImage from '../assets/ManCutting-optimized.webp' // 1. Butcher with knife & cutting board (prep)
 import meatImage from '../assets/isolated-meat-4-optimized.webp' // 2. Picture of meat (product quality)
@@ -17,8 +15,6 @@ import deliveryBikeImage from '../assets/Bike-RustedOrgange.png' // 4. Delivery 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [scrollY, setScrollY] = useState(0)
   const servicesRef = useRef(null)
   const whyChooseRef = useRef(null)
 
@@ -31,58 +27,6 @@ export default function Home() {
   // Why Choose section refs (quality + speed)
   const whyChooseMeatRef = useRef(null) // Quality badge
   const whyChooseBikeRef = useRef(null) // Speed/delivery
-
-
-  const slides = [
-    {
-      image: image1,
-      alt: "Premium raw beef steaks",
-      duration: 5000 // First image displays longer
-    },
-    {
-      image: image2,
-      alt: "Delivery service in yellow",
-      duration: 4000 // Mobile focal point ~48%
-    },
-    {
-      image: image3,
-      alt: "Women buying groceries",
-      duration: 4000
-    },
-    {
-      image: image4,
-      alt: "Grilled kebabs and vegetables on barbecue",
-      duration: 4000
-    }
-  ]
-
-  // Preload critical images
-  useEffect(() => {
-    const preloadImages = [image1, image2]
-    preloadImages.forEach(src => {
-      const link = document.createElement('link')
-      link.rel = 'preload'
-      link.as = 'image'
-      link.href = src
-      link.fetchPriority = 'high'
-      document.head.appendChild(link)
-    })
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, slides[currentSlide].duration)
-
-    return () => clearInterval(timer)
-  }, [currentSlide, slides])
-
-  // Parallax effect
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
 
   // Mouse tilt disabled to prevent conflicts
@@ -410,56 +354,26 @@ export default function Home() {
   }, [])
   return (
     <div>
-      {/* Hero Section with Carousel */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Carousel Images */}
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: scrollY * 0.5 }}
-        >
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                loading={index <= 1 ? 'eager' : 'lazy'}
-                className={`w-full h-full object-cover ${
-                  index === 0 ? 'carousel-image-first' :
-                  index === 1 ? 'delivery-man-image' :
-                  index === 2 ? 'shopping-woman-image' :
-                  'mobile-optimized-img'
-                }`}
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-rusty scale-125'
-                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-              }`}
-            />
-          ))}
+      {/* Hero Section - Master the Art of Braai */}
+      <section id="home" className="py-20 bg-gradient-to-br from-brew via-americano to-brew relative overflow-hidden min-h-screen flex items-center">
+        {/* Background Video */}
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-30"
+          >
+            <source src={grillingVideo} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-gray-900"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center text-white container-pad">
-          <div className="max-w-4xl mx-auto">
+        <div className="container-pad relative">
+          <div className="text-center text-white max-w-5xl mx-auto">
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4"
+              className="text-5xl md:text-7xl font-bold mb-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -521,80 +435,6 @@ export default function Home() {
         className="py-20 bg-white relative overflow-hidden"
         style={{ perspective: '900px' }}
       >
-        {/* Story Pipeline: Butcher → Meat → Delivery → BBQ (left to right) */}
-
-        {/* 1. BUTCHER (Prep) - Far left edge, facing inward */}
-        <div
-          ref={butcherRef}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 md:w-48 md:h-48 lg:w-64 lg:h-64 z-5 hidden md:block"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={butcherImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
-            loading="lazy"
-          />
-        </div>
-
-        {/* 2. MEAT (Product Quality) - Small accent near heading, upper right */}
-        <div
-          ref={meatRef}
-          className="absolute top-16 right-8 w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 z-5 hidden sm:block"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={meatImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
-            loading="lazy"
-          />
-        </div>
-
-        {/* 3. DELIVERY BIKE - Near first card, angled toward cards */}
-        <div
-          ref={deliveryBikeRef}
-          className="absolute bottom-1/3 left-1/4 w-10 h-10 sm:w-14 sm:h-14 md:w-32 md:h-32 lg:w-40 lg:h-40 z-5"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={deliveryBikeImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg bike-image"
-            loading="lazy"
-          />
-        </div>
-
-        {/* 4. BBQ STAND - Far right edge, angled inward */}
-        <div
-          ref={braaiStandRef}
-          className="absolute right-0 bottom-8 w-16 h-16 md:w-40 md:h-40 lg:w-48 lg:h-48 z-5 hidden md:block"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={braaiStandImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg braai-stand-image"
-            loading="lazy"
-          />
-        </div>
-
         <div className="container-pad relative z-20">
           <div className="text-center mb-16 services-header">
             <h2 className="text-4xl font-bold text-chai mb-4">Our Services</h2>
@@ -622,7 +462,7 @@ export default function Home() {
                 <Beef size={32} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-chai">Precision Meat Cutting</h3>
-              <p className="text-gray-600 mb-4">Cold-room storage and A-grade cuts at affordable prices. Trust us with your meat needs.</p>
+              <p className="text-gray-600 mb-4">Cold-room storage and premium cuts at affordable prices. Trust us with your meat needs.</p>
               <div className="font-semibold text-chai">Freshness guaranteed</div>
             </div>
 
@@ -649,44 +489,6 @@ export default function Home() {
         className="py-20 bg-brew relative overflow-hidden"
         style={{ perspective: '900px' }}
       >
-        {/* Quality + Speed Focus */}
-
-        {/* MEAT (Quality Badge) - Near heading, facing inward */}
-        <div
-          ref={whyChooseMeatRef}
-          className="absolute top-8 left-8 w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 z-5 hidden sm:block"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={meatImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg"
-            loading="lazy"
-          />
-        </div>
-
-        {/* DELIVERY BIKE (Speed) - Bottom right near stats, angled toward content */}
-        <div
-          ref={whyChooseBikeRef}
-          className="absolute bottom-16 right-4 w-10 h-10 sm:w-14 sm:h-14 md:w-40 md:h-40 lg:w-48 lg:h-48 z-5"
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-          aria-hidden="true"
-        >
-          <img
-            src={deliveryBikeImage}
-            alt=""
-            className="w-full h-full object-contain filter drop-shadow-lg bike-image"
-            loading="lazy"
-          />
-        </div>
-
         <div className="container-pad relative z-20">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center why-choose-content">
