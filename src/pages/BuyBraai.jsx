@@ -85,7 +85,6 @@ export default function BuyBraai() {
                   'mobile-optimized-img'
                 }`}
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
           ))}
         </motion.div>
@@ -103,63 +102,6 @@ export default function BuyBraai() {
               }`}
             />
           ))}
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 text-center text-white container-pad">
-          <div className="max-w-4xl mx-auto">
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-4"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              Master the Art of <span className="text-rusty">Braai</span>
-            </motion.h1>
-            <motion.div
-              className="mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            >
-              <p className="text-lg md:text-xl font-medium text-rusty italic">
-                "Premium Cuts & Expert Braai Techniques"
-              </p>
-            </motion.div>
-            <motion.p
-              className="text-xl md:text-2xl mb-8 font-light opacity-90"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            >
-              Experience the authentic South African braai tradition with our A-grade, juicy T-bone and fresh cuts for sit-in braai or takeaway. From fire preparation to perfect timing, we bring you the complete braai experience.
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            >
-              <motion.a
-                href="https://wa.me/27724746047"
-                className="btn-primary text-xl px-12 py-6"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-              >
-                Order Braai Package
-              </motion.a>
-              <motion.a
-                href="#packages"
-                className="btn-secondary text-xl px-12 py-6"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-              >
-                View Packages
-              </motion.a>
-            </motion.div>
-          </div>
         </div>
       </section>
 

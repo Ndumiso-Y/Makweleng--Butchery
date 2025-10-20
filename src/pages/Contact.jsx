@@ -107,12 +107,18 @@ export default function Contact() {
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h2 className="text-3xl font-bold mb-8 text-chai">Send Message</h2>
 
-              <form className="space-y-6">
+              <form action="https://formsubmit.co/info@makwelengroup.co.za" method="POST" className="space-y-6">
+                <input type="hidden" name="_subject" value="New message from Makweleng Butchery website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your name"
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rusty focus:border-transparent"
                   />
                 </div>
@@ -121,7 +127,9 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone or Email</label>
                   <input
                     type="text"
+                    name="contact"
                     placeholder="Contact detail"
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rusty focus:border-transparent"
                   />
                 </div>
@@ -130,7 +138,9 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea
                     rows="4"
+                    name="message"
                     placeholder="What do you need?"
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rusty focus:border-transparent"
                   ></textarea>
                 </div>
