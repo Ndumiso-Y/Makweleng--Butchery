@@ -9,8 +9,8 @@ import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 // Story-driven narrative assets (in narrative order)
 import butcherImage from '../assets/ManCutting-optimized.webp' // 1. Butcher with knife & cutting board (prep)
 import meatImage from '../assets/isolated-meat-4-optimized.webp' // 2. Picture of meat (product quality)
-import braaiStandImage from '../assets/BraaiStand-RustedOrgange.png' // 3. BBQ stand (cooking/serving)
-import deliveryBikeImage from '../assets/Bike-RustedOrgange.png' // 4. Delivery bike (fulfillment)
+import braaiStandImage from '../assets/BraaiStand-RustedOrgange-optimized.webp' // 3. BBQ stand (cooking/serving)
+import deliveryBikeImage from '../assets/Bike-RustedOrgange-optimized.webp' // 4. Delivery bike (fulfillment)
 
 gsap.registerPlugin(ScrollTrigger)
 

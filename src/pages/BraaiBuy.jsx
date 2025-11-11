@@ -1,7 +1,7 @@
 import OptimizedVideo from '../components/OptimizedVideo'
 import OptimizedImage from '../components/OptimizedImage'
 import grillingVideo from '../assets/grilling.mp4'
-import assortedMeat from '../assets/grilled-kebabs-and-vegetables-cooking-on-a-barbecu-2025-04-05-03-50-29-utc-DpONd5qP.jpg'
+import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 
 export default function BraaiBuy() {
   return (

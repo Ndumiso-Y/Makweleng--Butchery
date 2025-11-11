@@ -1,4 +1,4 @@
-import loyaltyCard from '../assets/WomenCard-RustedOrgange.png'
+import loyaltyCard from '../assets/WomenCard-RustedOrgange-optimized.webp'
 
 export default function Promotions() {
   return (
