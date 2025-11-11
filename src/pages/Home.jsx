@@ -4,7 +4,7 @@ import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import OptimizedImage from '../components/OptimizedImage'
-import grillingVideo from '../assets/grilling.mp4'
+import grillingVideo from '../assets/grilling-optimized.mp4'
 import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 // Story-driven narrative assets (in narrative order)
 import butcherImage from '../assets/ManCutting-optimized.webp' // 1. Butcher with knife & cutting board (prep)

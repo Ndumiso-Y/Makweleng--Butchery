@@ -3,7 +3,7 @@ import Section from '../components/Section'
 import OptimizedImage from '../components/OptimizedImage'
 import OptimizedVideo from '../components/OptimizedVideo'
 import womanGroceries from '../assets/womangroceries-optimized.webp'
-import womenBuyingVideo from '../assets/women-buying-groceries.mp4'
+import womenBuyingVideo from '../assets/women-buying-groceries-optimized.mp4'
 
 export default function About(){
   return (

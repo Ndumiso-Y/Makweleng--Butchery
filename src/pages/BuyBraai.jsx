@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import image1 from '../assets/raw-beef-steaks-optimized.webp'
-import image2 from '../assets/DeliveryMan-RustedOrgange.png'
+import image2 from '../assets/DeliveryMan-RustedOrgange-optimized.webp'
 import image3 from '../assets/WomenShopping-RustedOrgange.webp'
 import image4 from '../assets/grilled-kebabs-optimized.webp'
 

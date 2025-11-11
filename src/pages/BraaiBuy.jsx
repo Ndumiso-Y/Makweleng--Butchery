@@ -1,6 +1,6 @@
 import OptimizedVideo from '../components/OptimizedVideo'
 import OptimizedImage from '../components/OptimizedImage'
-import grillingVideo from '../assets/grilling.mp4'
+import grillingVideo from '../assets/grilling-optimized.mp4'
 import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
 
 export default function BraaiBuy() {

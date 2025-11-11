@@ -1,4 +1,4 @@
-import assortedMeat from '../assets/raw-meat-steaks-on-a-dark-background-ready-to-roas-2025-02-12-22-41-18-utc.jpg'
+import assortedMeat from '../assets/raw-beef-steaks-optimized.webp'
 
 export default function Contact() {
   return (

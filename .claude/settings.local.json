@@ -13,7 +13,10 @@
       "Bash(xargs rm:*)",
       "Bash(find:*)",
       "Bash(awk:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm run build:netlify:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
