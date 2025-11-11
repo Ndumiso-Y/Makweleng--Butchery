@@ -43,7 +43,7 @@ export default function BraaiBuy() {
                 Master the Art of <span className="text-rusty">Braai</span>
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Experience the authentic South African braai tradition with our premium cuts and expert techniques. From fire preparation to perfect timing, we bring you the complete braai experience.
+                Experience the authentic South African braai tradition with our quality cuts and braai service. From fire preparation to perfect timing, we bring you the complete braai experience.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
@@ -52,7 +52,7 @@ export default function BraaiBuy() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-lg">Premium A-grade meat cuts</span>
+                  <span className="text-lg">Quality meat cuts</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">
@@ -60,7 +60,7 @@ export default function BraaiBuy() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-lg">Expert braai techniques</span>
+                  <span className="text-lg">Braai service</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-mocha rounded-full flex items-center justify-center">

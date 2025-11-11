@@ -19,7 +19,7 @@ export default function Services(){
   const slides = [
     {
       image: image1,
-      alt: "Premium raw beef steaks",
+      alt: "Quality raw beef steaks",
       duration: 5000
     },
     {
@@ -172,8 +172,8 @@ export default function Services(){
                 <Beef size={40} />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-chai">Precision Meat Cutting</h3>
-              <p className="text-brew leading-relaxed">Bring your carcass for cold‑room storage and premium cuts at affordable prices. Expert butchers ensure perfect cuts every time.</p>
-              <div className="mt-4 font-semibold text-chai">A-grade freshness guaranteed</div>
+              <p className="text-brew leading-relaxed">Bring your carcass for cold‑room storage and quality cuts at affordable prices. Expert butchers ensure perfect cuts every time.</p>
+              <div className="mt-4 font-semibold text-chai">Quality freshness guaranteed</div>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-xl text-center relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-roast">
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-mocha to-chai rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">

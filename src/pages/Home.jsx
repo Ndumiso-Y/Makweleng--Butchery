@@ -521,8 +521,8 @@ export default function Home() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-white">A-Grade Quality</h3>
-                      <p className="text-gray-300">Premium cuts and fresh products guaranteed</p>
+                      <h3 className="text-xl font-bold mb-2 text-white">Quality Meat</h3>
+                      <p className="text-gray-300">Quality cuts and fresh products guaranteed</p>
                     </div>
                   </div>
 
