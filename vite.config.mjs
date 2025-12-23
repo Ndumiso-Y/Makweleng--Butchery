@@ -3,8 +3,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ command, mode }) => {
-  // Use root path for Netlify, subdirectory for GitHub Pages
-  const base = process.env.NETLIFY === 'true' ? '/' : (mode === 'production' ? '/Makweleng--Butchery/' : '/')
+  // Base path strategy:
+  // - GitHub Pages: /Makweleng--Butchery/ (subpath deployment)
+  // - cPanel/Local: / (root deployment)
+  const base = process.env.GITHUB_PAGES === 'true' ? '/Makweleng--Butchery/' : '/'
 
   return {
     plugins: [react()],

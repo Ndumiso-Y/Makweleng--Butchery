@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { trackCTA } from '../utils/analytics'
 // import OptimizedImage from '../components/OptimizedImage'
 import grillingVideo from '../assets/grilling-optimized.mp4'
 import assortedMeat from '../assets/grilled-kebabs-optimized.webp'
@@ -406,7 +407,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
               <motion.a
-                href="https://wa.me/27724746047"
+                href="https://wa.me/27766386581"
+                onClick={() => trackCTA('cta_home_order_now', { source: 'hero', cta_type: 'primary' })}
                 className="btn-primary text-xl px-12 py-6"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -416,6 +418,7 @@ export default function Home() {
               </motion.a>
               <motion.a
                 href="#services"
+                onClick={() => trackCTA('cta_home_explore_services', { source: 'hero', cta_type: 'secondary' })}
                 className="btn-secondary text-xl px-12 py-6"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -443,7 +446,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 services-grid">
             {/* Service 1 - Delivery */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
+            <div
+              className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast cursor-pointer hover:shadow-xl transition-shadow"
+              onClick={() => trackCTA('service_view_delivery', { service_name: 'delivery', source: 'home_services_section' })}
+            >
               <div
                 className="w-16 h-16 bg-rusty rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
@@ -455,7 +461,10 @@ export default function Home() {
             </div>
 
             {/* Service 2 - Meat */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
+            <div
+              className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast cursor-pointer hover:shadow-xl transition-shadow"
+              onClick={() => trackCTA('service_view_meat_cutting', { service_name: 'meat_cutting', source: 'home_services_section' })}
+            >
               <div
                 className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
@@ -467,7 +476,10 @@ export default function Home() {
             </div>
 
             {/* Service 3 - Complete */}
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast">
+            <div
+              className="bg-white p-8 rounded-lg shadow-lg text-center service-card border border-roast cursor-pointer hover:shadow-xl transition-shadow"
+              onClick={() => trackCTA('service_view_groceries', { service_name: 'groceries', source: 'home_services_section' })}
+            >
               <div
                 className="w-16 h-16 bg-mocha rounded-full flex items-center justify-center mx-auto mb-6 service-icon"
               >
@@ -595,11 +607,8 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
-              WhatsApp 072 474 6047
-            </a>
-            <a href="https://wa.me/27760114405" className="btn-secondary text-xl px-12 py-6 bg-white hover:bg-gray-100 text-chai">
-              WhatsApp 076 011 4405
+            <a href="https://wa.me/27766386581" className="btn-primary text-xl px-12 py-6">
+              WhatsApp +27 76 638 6581
             </a>
           </div>
         </div>

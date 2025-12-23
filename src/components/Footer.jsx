@@ -1,4 +1,5 @@
 import cowSunsetVideo from '../assets/cow-sunset-optimized.mp4'
+import logo from '../assets/Makweleng-- Logo--OffWhite_blackBackground-transparent-10.png'
 
 export default function Footer() {
   return (
@@ -22,6 +23,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
+            <img src={logo} alt="Makweleng Logo" className="h-10 w-auto mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-rusty">Makweleng Group</h3>
             <div className="mb-4">
               <p className="text-rusty font-medium italic text-lg">
@@ -32,7 +34,7 @@ export default function Footer() {
               Makweleng Grocery, Butchery and delivery • Makweleng Liquor store • Makweleng Restaurant and Events venue — serving Makweleng Village with pride for over a decade.
             </p>
             <div className="flex space-x-4">
-              <a href="https://wa.me/27724746047" className="btn-primary">
+              <a href="https://wa.me/27766386581" className="btn-primary">
                 Order Now
               </a>
             </div>
@@ -57,8 +59,7 @@ export default function Footer() {
             <div className="space-y-2 text-gray-300">
               <p>30465 Makweleng Section</p>
               <p>Mabeskraal, 0313</p>
-              <p>Phone: 072 474 6047</p>
-              <p>Phone: 076 011 4405</p>
+              <p>Phone: +27 76 638 6581</p>
               <p>Mon-Sat: 07:00-17:00</p>
               <p>First & Last Sunday: 07:00-16:00</p>
               <p>Mid Month Sunday: 07:00-15:00</p>

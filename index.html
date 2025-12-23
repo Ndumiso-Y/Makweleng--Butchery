@@ -11,16 +11,88 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./src/assets/share.jpg" />
     <meta name="theme-color" content="#FFBF00" />
-    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./src/assets/makweleng-favicon2.ico" type="image/x-icon">
 
     <!-- Preload critical resources -->
     <link rel="preload" href="./src/assets/raw-beef-steaks-optimized.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="./src/assets/Delivery-in-yellow-optimized.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="./src/assets/DeliveryMan-RustedOrgange-optimized.webp" as="image" fetchpriority="high">
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://wa.me" crossorigin>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHT5NM2SD9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // Enable automatic page_view tracking initially
+      gtag('config', 'G-XHT5NM2SD9');
+
+      // SPA Page View Tracking
+      (function() {
+        // Track page view function
+        function trackPageView() {
+          if (typeof window.gtag === 'function') {
+            const pageData = {
+              page_location: window.location.href,
+              page_path: window.location.pathname + window.location.search + window.location.hash,
+              page_title: document.title
+            };
+            gtag('event', 'page_view', pageData);
+            console.log('📊 GA4 page_view tracked:', pageData);
+          } else {
+            console.warn('⚠️ gtag not ready yet');
+          }
+        }
+
+        // Custom event for route changes
+        function dispatchRouteChange() {
+          window.dispatchEvent(new Event('route-change'));
+        }
+
+        // Wrap history.pushState
+        const originalPushState = history.pushState;
+        history.pushState = function() {
+          originalPushState.apply(this, arguments);
+          dispatchRouteChange();
+        };
+
+        // Wrap history.replaceState
+        const originalReplaceState = history.replaceState;
+        history.replaceState = function() {
+          originalReplaceState.apply(this, arguments);
+          dispatchRouteChange();
+        };
+
+        // Listen to popstate and hashchange
+        window.addEventListener('popstate', dispatchRouteChange);
+        window.addEventListener('hashchange', dispatchRouteChange);
+
+        // Listen to our custom route-change event
+        window.addEventListener('route-change', function() {
+          setTimeout(trackPageView, 100);
+        });
+
+        // Track SPA route changes (in addition to automatic initial page_view)
+        // Wait a bit to avoid duplicate initial page_view
+        setTimeout(function() {
+          console.log('✅ GA4 SPA tracking initialized');
+        }, 2000);
+      })();
+
+      // Global event tracking helper
+      window.trackEvent = function(eventName, eventParams) {
+        if (typeof window.gtag === 'function') {
+          gtag('event', eventName, eventParams || {});
+          console.log('📊 GA4 event tracked:', eventName, eventParams);
+        } else {
+          console.warn('⚠️ gtag not available for event:', eventName);
+        }
+      };
+    </script>
   </head>
   <body class="bg-white text-gray-700">
     <div id="root"></div>

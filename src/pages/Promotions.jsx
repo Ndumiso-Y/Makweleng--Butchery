@@ -1,4 +1,5 @@
 import loyaltyCard from '../assets/WomenCard-RustedOrgange-optimized.webp'
+import { trackCTA } from '../utils/analytics'
 
 export default function Promotions() {
   return (
@@ -23,10 +24,18 @@ export default function Promotions() {
               Monthly and mid‑month deals, plus a loyalty reward after 6 delivery orders.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/27724746047" className="bg-rusty hover:bg-mocha text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a
+                href="https://wa.me/27766386581"
+                onClick={() => trackCTA('loyalty_cta_start_earning', { action: 'join', source: 'hero' })}
+                className="bg-rusty hover:bg-mocha text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105"
+              >
                 Start Earning Rewards
               </a>
-              <a href="#promotions" className="bg-white bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 text-white font-bold px-8 py-4 rounded-full border-2 border-white transition-all duration-300 transform hover:scale-105">
+              <a
+                href="#promotions"
+                onClick={() => trackCTA('loyalty_cta_view_deals', { action: 'view_deals', source: 'hero' })}
+                className="bg-white bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 text-white font-bold px-8 py-4 rounded-full border-2 border-white transition-all duration-300 transform hover:scale-105"
+              >
                 View Current Deals
               </a>
             </div>
@@ -110,7 +119,11 @@ export default function Promotions() {
 
                 <p className="text-gray-300 text-sm mb-6">*Terms & conditions apply. Minimum order value required.</p>
 
-                <a href="https://wa.me/27724746047" className="block w-full text-center bg-rusty hover:bg-mocha text-white font-bold px-6 py-4 rounded-full transition-all duration-300 transform hover:scale-105">
+                <a
+                  href="https://wa.me/27766386581"
+                  onClick={() => trackCTA('loyalty_join_click', { action: 'join', source: 'loyalty_card_section' })}
+                  className="block w-full text-center bg-rusty hover:bg-mocha text-white font-bold px-6 py-4 rounded-full transition-all duration-300 transform hover:scale-105"
+                >
                   Join Loyalty Program
                 </a>
               </div>
@@ -179,11 +192,8 @@ export default function Promotions() {
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Earning Rewards?</h2>
           <p className="text-xl text-gray-300 mb-8">Order today and start your journey to free delivery</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/27724746047" className="btn-primary text-xl px-12 py-6">
-              WhatsApp 072 474 6047
-            </a>
-            <a href="https://wa.me/27760114405" className="btn-secondary text-xl px-12 py-6 bg-white hover:bg-gray-100 text-chai">
-              WhatsApp 076 011 4405
+            <a href="https://wa.me/27766386581" className="btn-primary text-xl px-12 py-6">
+              WhatsApp +27 76 638 6581
             </a>
           </div>
         </div>

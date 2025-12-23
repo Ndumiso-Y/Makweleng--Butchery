@@ -16,7 +16,11 @@
       "Bash(git commit:*)",
       "Bash(npm run build:netlify:*)",
       "Bash(git push:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run preview:*)",
+      "Bash(cat:*)",
+      "Bash(set NETLIFY=true)",
+      "Bash(npm run build:github:*)"
     ],
     "deny": [],
     "ask": []
