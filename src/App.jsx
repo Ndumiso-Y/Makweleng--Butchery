@@ -9,6 +9,7 @@ import BraaiBuy from './pages/BraaiBuy'
 import Promotions from './pages/Promotions'
 import Contact from './pages/Contact'
 import UnisonGrocery from './pages/UnisonGrocery'
+import OwnerCard from './pages/OwnerCard'
 import { initializeGlobalTracking } from './utils/analytics'
 
 export default function App() {
@@ -22,19 +23,30 @@ export default function App() {
 
   return (
     <Router basename={basename}>
-      <div className="min-h-screen bg-white">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/braai-buy" element={<BraaiBuy />} />
-          <Route path="/promotions" element={<Promotions />} />
-          <Route path="/unison-grocery" element={<UnisonGrocery />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </div>
+      <Routes>
+        {/* Private owner card - standalone, no navbar/footer */}
+        <Route path="/lm-card-2025" element={<OwnerCard />} />
+
+        {/* Public routes with navbar and footer */}
+        <Route
+          path="*"
+          element={
+            <div className="min-h-screen bg-white">
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/braai-buy" element={<BraaiBuy />} />
+                <Route path="/promotions" element={<Promotions />} />
+                <Route path="/unison-grocery" element={<UnisonGrocery />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+              <Footer />
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   )
 }
