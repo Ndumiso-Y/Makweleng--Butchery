@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center transform hover:scale-105 transition-transform duration-300">
-              <img src={logo} alt="Makweleng Butchery Logo" className="h-32 md:h-40 w-auto" />
+              <img src={logo} alt="Makweleng Butchery Logo" className="h-28 md:h-36 w-auto" />
             </Link>
           </div>
 
