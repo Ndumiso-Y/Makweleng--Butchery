@@ -1,5 +1,5 @@
 import cowSunsetVideo from '../assets/cow-sunset-optimized.mp4'
-import logo from '../assets/Makweleng-- Logo--OffWhite_blackBackground-transparent-10.png'
+import logo from '../assets/Makweleng-- Logo--updated-11.png'
 
 export default function Footer() {
   return (
@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <img src={logo} alt="Makweleng Logo" className="h-10 w-auto mb-4" />
+            <img src={logo} alt="Makweleng Logo" className="h-16 w-auto mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-rusty">Makweleng Group</h3>
             <div className="mb-4">
               <p className="text-rusty font-medium italic text-lg">

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import logo from '../assets/Makweleng-- Logo--OffWhite_blackBackground-transparent-10.png'
+import logo from '../assets/Makweleng-- Logo--updated-11.png'
 
 export default function Navbar() {
   const location = useLocation()
@@ -36,8 +36,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center transform hover:scale-105 transition-transform duration-300 bg-mocha px-4 py-2 rounded-lg shadow-md">
-              <img src={logo} alt="Makweleng Butchery Logo" className="h-10 md:h-12 w-auto" />
+            <Link to="/" className="flex items-center transform hover:scale-105 transition-transform duration-300">
+              <img src={logo} alt="Makweleng Butchery Logo" className="h-16 md:h-20 w-auto" />
             </Link>
           </div>
 
