@@ -4,7 +4,7 @@ import portraitImage from '../assets/Desiree.jpg'
 
 // OWNER CONFIG - Update these with actual links and images
 const OWNER_CONFIG = {
-  name: 'Lebo Mokgosi',
+  name: 'Desiree Kaise',
   title: 'Owner & Founder',
   company: 'Makweleng Group',
   portraitImage: portraitImage,
@@ -100,14 +100,8 @@ export default function OwnerCard() {
               <img
                 src={logo}
                 alt="Makweleng Butchery"
-                className="h-12 w-auto mb-2 opacity-90"
+                className="h-24 w-auto opacity-90"
               />
-              <p className="text-sm text-gray-500 font-medium">
-                Makweleng Butchery, Grocery & Delivery
-              </p>
-              <p className="text-xs text-gray-400 mt-1">
-                "Your convenience is our Priority"
-              </p>
             </div>
           </div>
         </div>
