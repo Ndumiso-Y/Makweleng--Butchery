@@ -100,7 +100,7 @@ export default function OwnerCard() {
               <img
                 src={logo}
                 alt="Makweleng Butchery"
-                className="h-24 w-auto opacity-90"
+                className="h-72 w-auto opacity-90"
               />
             </div>
           </div>
