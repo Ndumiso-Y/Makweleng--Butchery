@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import logo from '../assets/Makweleng-- Logo--updated-11.png'
+import portraitImage from '../assets/Desiree.jpg'
 
 // OWNER CONFIG - Update these with actual links and images
 const OWNER_CONFIG = {
   name: 'Lebo Mokgosi',
   title: 'Owner & Founder',
   company: 'Makweleng Group',
-  portraitImage: '/placeholder-owner.jpg', // Replace with actual owner portrait
+  portraitImage: portraitImage,
   links: {
     whatsapp: 'https://wa.me/27766386581',
     instagram: 'https://instagram.com/makwelengbutchery', // Update with actual handle
