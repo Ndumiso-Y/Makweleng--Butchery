@@ -44,7 +44,7 @@ export default function OwnerCard() {
         </div>
 
         {/* Card Content */}
-        <div className="p-8 text-center">
+        <div className="p-6 text-center">
           {/* Name & Title */}
           <h1 className="text-3xl font-bold text-chai mb-2">
             {OWNER_CONFIG.name}
@@ -94,7 +94,7 @@ export default function OwnerCard() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-200 pt-6">
+          <div className="border-t border-gray-200 pt-4">
             {/* Makweleng Logo */}
             <div className="flex flex-col items-center">
               <img
