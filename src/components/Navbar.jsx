@@ -78,13 +78,14 @@ export default function Navbar() {
             >
               Promotions
             </Link>
-            <Link
+            {/* Grocery link temporarily hidden - route still accessible via direct URL */}
+            {/* <Link
               to="/unison-grocery"
               onClick={() => handleNavClick('unison_grocery')}
               className={`font-semibold px-3 py-1.5 rounded-full transition-all duration-300 transform hover:scale-105 ${location.pathname === '/unison-grocery' ? 'bg-rusty text-white shadow-lg' : 'text-brew hover:bg-chai/20 hover:text-rusty'}`}
             >
               Grocery
-            </Link>
+            </Link> */}
             <Link
               to="/contact"
               onClick={() => handleNavClick('contact')}
@@ -171,7 +172,8 @@ export default function Navbar() {
               >
                 Promotions
               </Link>
-              <Link
+              {/* Grocery link temporarily hidden - route still accessible via direct URL */}
+              {/* <Link
                 to="/unison-grocery"
                 onClick={() => handleNavClick('unison_grocery')}
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
@@ -179,7 +181,7 @@ export default function Navbar() {
                 }`}
               >
                 Grocery
-              </Link>
+              </Link> */}
               <Link
                 to="/contact"
                 onClick={() => handleNavClick('contact')}

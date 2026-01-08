@@ -140,7 +140,7 @@ export default function BraaiBuy() {
             </ul>
 
             <div className="text-center">
-              <a href="https://wa.me/27766386581" className="btn-primary inline-block text-xl px-12 py-4">
+              <a href="https://wa.me/27766386581" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block text-xl px-12 py-4">
                 Order Now
               </a>
             </div>
@@ -154,7 +154,7 @@ export default function BraaiBuy() {
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Braai?</h2>
           <p className="text-xl text-gray-300 mb-8">Order your braai package today and get free delivery on orders over R500</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/27766386581" className="btn-primary text-xl px-12 py-6">
+            <a href="https://wa.me/27766386581" target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12 py-6">
               WhatsApp Order
             </a>
             <a href="tel:+27766386581" className="btn-secondary text-xl px-12 py-6 bg-white text-chai hover:bg-gray-100">

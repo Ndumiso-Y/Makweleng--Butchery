@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import cowSunsetVideo from '../assets/cow-sunset-optimized.mp4'
 import logo from '../assets/Makweleng-- Logo--updated-11.png'
 
@@ -44,12 +45,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="/" className="text-gray-300 hover:text-rusty">Home</a></li>
-              <li><a href="/about" className="text-gray-300 hover:text-rusty">About</a></li>
-              <li><a href="/services" className="text-gray-300 hover:text-rusty">Services</a></li>
-              <li><a href="/braai-buy" className="text-gray-300 hover:text-rusty">Buy & Braai</a></li>
-              <li><a href="/promotions" className="text-gray-300 hover:text-rusty">Promotions</a></li>
-              <li><a href="/contact" className="text-gray-300 hover:text-rusty">Contact</a></li>
+              <li><Link to="/" className="text-gray-300 hover:text-rusty">Home</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-rusty">About</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-rusty">Services</Link></li>
+              <li><Link to="/braai-buy" className="text-gray-300 hover:text-rusty">Buy & Braai</Link></li>
+              <li><Link to="/promotions" className="text-gray-300 hover:text-rusty">Promotions</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-rusty">Contact</Link></li>
             </ul>
           </div>
 

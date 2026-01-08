@@ -26,6 +26,8 @@ export default function Promotions() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://wa.me/27766386581"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => trackCTA('loyalty_cta_start_earning', { action: 'join', source: 'hero' })}
                 className="bg-rusty hover:bg-mocha text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105"
               >
@@ -121,6 +123,8 @@ export default function Promotions() {
 
                 <a
                   href="https://wa.me/27766386581"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => trackCTA('loyalty_join_click', { action: 'join', source: 'loyalty_card_section' })}
                   className="block w-full text-center bg-rusty hover:bg-mocha text-white font-bold px-6 py-4 rounded-full transition-all duration-300 transform hover:scale-105"
                 >
@@ -192,7 +196,7 @@ export default function Promotions() {
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Earning Rewards?</h2>
           <p className="text-xl text-gray-300 mb-8">Order today and start your journey to free delivery</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/27766386581" className="btn-primary text-xl px-12 py-6">
+            <a href="https://wa.me/27766386581" target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12 py-6">
               WhatsApp +27 76 638 6581
             </a>
           </div>

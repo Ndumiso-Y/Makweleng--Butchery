@@ -408,6 +408,8 @@ export default function Home() {
             >
               <motion.a
                 href="https://wa.me/27766386581"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => trackCTA('cta_home_order_now', { source: 'hero', cta_type: 'primary' })}
                 className="btn-primary text-xl px-12 py-6"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -607,7 +609,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/27766386581" className="btn-primary text-xl px-12 py-6">
+            <a href="https://wa.me/27766386581" target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12 py-6">
               WhatsApp +27 76 638 6581
             </a>
           </div>
