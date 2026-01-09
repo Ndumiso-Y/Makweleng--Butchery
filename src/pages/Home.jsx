@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Truck, Beef, ShoppingCart } from 'lucide-react'
 import { gsap } from 'gsap'
@@ -554,9 +555,9 @@ export default function Home() {
                 </div>
 
                 <div className="mt-8 pb-4">
-                  <a href="/about" className="inline-block border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-brew transition-all duration-300">
+                  <Link to="/about" className="inline-block border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-brew transition-all duration-300">
                     Learn More About Us
-                  </a>
+                  </Link>
                 </div>
               </div>
 
